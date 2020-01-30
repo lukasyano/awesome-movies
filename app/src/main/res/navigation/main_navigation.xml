@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.lukas.awesomemovies.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home"/>
+
+    <fragment
+        android:id="@+id/navigation_bookmarks"
+        android:name="com.lukas.awesomemovies.ui.bookmarks.BookmarksFragment"
+        android:label="@string/title_bookmarks" />
+
+    <fragment
+        android:id="@+id/navigation_discover"
+        android:name="com.lukas.awesomemovies.ui.discover.DiscoverFragment"
+        android:label="@string/title_discover" />
+
+</navigation>

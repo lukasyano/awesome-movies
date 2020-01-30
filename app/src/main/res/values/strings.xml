@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Awesome Movies</string>
+    <string name="title_home">Home Fragment</string>
+    <string name="bottom_nav_home_item">Home</string>
+    <string name="bottom_nav_discover_item">Discover</string>
+    <string name="bottom_nav_bookmarks_item">Bookmarks</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_discover">Discover</string>
 </resources>
