@@ -14,6 +14,6 @@ class BookmarksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       return inflater.inflate(R.layout.fragment_bookmars,container,false)
+       return inflater.inflate(R.layout.fragment_bookmarks,container,false)
     }
 }

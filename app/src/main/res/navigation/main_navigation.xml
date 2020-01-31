@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home"/>
 
     <fragment
-        android:id="@+id/navigation_bookmarks"
-        android:name="com.lukas.awesomemovies.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_bookmarks" />
-
-    <fragment
         android:id="@+id/navigation_discover"
         android:name="com.lukas.awesomemovies.ui.discover.DiscoverFragment"
         android:label="@string/title_discover" />
+
+    <fragment
+        android:id="@+id/navigation_bookmarks"
+        android:name="com.lukas.awesomemovies.ui.bookmarks.BookmarksFragment"
+        android:label="@string/title_bookmarks" />
 
 </navigation>
