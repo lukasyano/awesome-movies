@@ -2,12 +2,12 @@ package com.lukas.awesomemovies.data
 
 import com.google.gson.Gson
 
-class JsonParser {
+object JsonParser {
 
-     val response = Constants.fakeFeaturedMoviesResponse
+    private val response = Constants.fakeFeaturedMoviesResponse
 
-    fun parseJsonMovies() : TrendingMoviesResponse{
+    fun parseJsonMovies(): TrendingMoviesResponse {
         val gson : Gson = Gson().newBuilder().create()
-        return gson.fromJson(response,TrendingMoviesResponse::class.java)
+        return gson.fromJson(response, TrendingMoviesResponse::class.java)
     }
 }

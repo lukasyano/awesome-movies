@@ -17,13 +17,13 @@ class ExampleUnitTest {
     }
     @Test
     fun printFakDAte(){
-        val tekstas = JsonParser().parseJsonMovies()
+        val tekstas = JsonParser.parseJsonMovies()
         print(
             """
                 
                 Page : ${tekstas.page}
-                Results : ${tekstas.result.size}
-                title of first item ${tekstas.result[0].title}
+                Results : ${tekstas.results.size}
+                title of first item ${tekstas.results[0].title}
                 
             """.trimIndent()
         )
