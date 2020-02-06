@@ -16,28 +16,21 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_list_item, parent, false)
-        Log.d("onCreateViewHolder","onCreateViewHolder")
         return MovieItemViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        Log.d("getItemCount","getItemCount")
-
         return data.size
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        Log.d("onBindViewHolder","onBindViewHolder")
-
         val movie = data[position]
 
         holder.titleView.text = movie.title
         holder.descriptionView.text = movie.overview
     }
 
-    fun updateData(data : List<Movie>){
-        Log.d("updateData","updateData")
-
+    fun updateData(data: List<Movie>) {
         this.data = data
         notifyDataSetChanged()
     }

@@ -41,6 +41,8 @@ class HomeFragment : Fragment() {
         return false
     }
 
-    fun loadData() = adapter.updateData(homeViewModel.getFavouriteMovies())
-
+    fun loadData() {
+        val movies = homeViewModel.getFavouriteMovies()
+        adapter.updateData(movies)
+    }
 }
