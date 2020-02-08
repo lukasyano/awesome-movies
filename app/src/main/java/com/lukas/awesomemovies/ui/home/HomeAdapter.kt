@@ -1,12 +1,12 @@
 package com.lukas.awesomemovies.ui.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.data.Movie
+import com.lukas.awesomemovies.loadIntoBaseUrl
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
@@ -28,6 +28,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
 
         holder.titleView.text = movie.title
         holder.descriptionView.text = movie.overview
+        holder.mainImageView.loadIntoBaseUrl(movie.poster_path)
     }
 
     fun updateData(data: List<Movie>) {

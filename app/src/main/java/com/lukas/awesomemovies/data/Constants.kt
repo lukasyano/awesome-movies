@@ -1,5 +1,433 @@
 package com.lukas.awesomemovies.data
 
 object Constants {
-    const val fakeFeaturedMoviesResponse = "{\"page\":1,\"results\":[{\"id\":290859,\"video\":false,\"vote_count\":1231,\"vote_average\":6.2,\"title\":\"Terminator: Dark Fate\",\"release_date\":\"2019-10-23\",\"original_language\":\"en\",\"original_title\":\"Terminator: Dark Fate\",\"genre_ids\":[28,878],\"backdrop_path\":\"/riTANvQ8GKmQbgtC1ps3OfkU43A.jpg\",\"adult\":false,\"overview\":\"Decades after Sarah Connor prevented Judgment Day, a lethal new Terminator is sent to eliminate the future leader of the resistance. In a fight to save mankind, battle-hardened Sarah Connor teams up with an unexpected ally and an enhanced super soldier to stop the deadliest Terminator yet.\",\"poster_path\":\"/vqzNJRH4YyquRiWxCCOH0aXggHI.jpg\",\"popularity\":141.75,\"media_type\":\"movie\"},{\"id\":475557,\"video\":false,\"vote_count\":8535,\"vote_average\":8.3,\"title\":\"Joker\",\"release_date\":\"2019-10-02\",\"original_language\":\"en\",\"original_title\":\"Joker\",\"genre_ids\":[80,18,53],\"backdrop_path\":\"/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg\",\"adult\":false,\"overview\":\"During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.\",\"poster_path\":\"/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg\",\"popularity\":151.753,\"media_type\":\"movie\"},{\"id\":359724,\"video\":false,\"vote_count\":1108,\"vote_average\":7.8,\"title\":\"Ford v Ferrari\",\"release_date\":\"2019-11-13\",\"original_language\":\"en\",\"original_title\":\"Ford v Ferrari\",\"genre_ids\":[28,18],\"backdrop_path\":\"/n3UanIvmnBlH531pykuzNs4LbH6.jpg\",\"adult\":false,\"overview\":\"American car designer Carroll Shelby and the British-born driver Ken Miles work together to battle corporate interference, the laws of physics, and their own personal demons to build a revolutionary race car for Ford Motor Company and take on the dominating race cars of Enzo Ferrari at the 24 Hours of Le Mans in France in 1966.\",\"poster_path\":\"/6ApDtO7xaWAfPqfi2IARXIzj8QS.jpg\",\"popularity\":213.634,\"media_type\":\"movie\"},{\"id\":501170,\"video\":false,\"vote_count\":861,\"vote_average\":7.1,\"title\":\"Doctor Sleep\",\"release_date\":\"2019-10-30\",\"original_language\":\"en\",\"original_title\":\"Doctor Sleep\",\"genre_ids\":[18,14,27],\"backdrop_path\":\"/sZAXOoOMyCbBskmqR0f4LShxXtw.jpg\",\"adult\":false,\"overview\":\"Still irrevocably scarred by the trauma he endured as a child at the Overlook, Dan Torrance has fought to find some semblance of peace. But that peace is shattered when he encounters Abra, a courageous teenager with her own powerful extrasensory gift, known as the 'shine'.\\\" Instinctively recognising that Dan shares her power, Abra has sought him out, desperate for his help against the merciless Rose the Hat and her followers.\",\"poster_path\":\"/p69QzIBbN06aTYqRRiCOY1emNBh.jpg\",\"popularity\":103.586,\"media_type\":\"movie\"},{\"id\":530915,\"video\":false,\"vote_count\":1604,\"vote_average\":8.1,\"title\":\"1917\",\"release_date\":\"2019-12-10\",\"original_language\":\"en\",\"original_title\":\"1917\",\"genre_ids\":[18,36,10752],\"backdrop_path\":\"/tJgmraUAmVlJPlq72yC76tKDyC4.jpg\",\"adult\":false,\"overview\":\"At the height of the First World War, two young British soldiers, Schofield and Blake are given a seemingly impossible mission. In a race against time, they must cross enemy territory and deliver a message that will stop a deadly attack on hundreds of soldiers—Blake's own brother among them.\",\"poster_path\":\"/iZf0KyrE25z1sage4SYFLCCrMi9.jpg\",\"popularity\":215.046,\"media_type\":\"movie\"},{\"id\":420809,\"video\":false,\"vote_count\":1660,\"vote_average\":7.2,\"title\":\"Maleficent: Mistress of Evil\",\"release_date\":\"2019-10-16\",\"original_language\":\"en\",\"original_title\":\"Maleficent: Mistress of Evil\",\"genre_ids\":[12,14,10751],\"backdrop_path\":\"/skvI4rYFrKXS73BJxWGH54Omlvv.jpg\",\"adult\":false,\"overview\":\"Maleficent and her goddaughter Aurora begin to question the complex family ties that bind them as they are pulled in different directions by impending nuptials, unexpected allies, and dark new forces at play.\",\"poster_path\":\"/vloNTScJ3w7jwNwtNGoG8DbTThv.jpg\",\"popularity\":74.733,\"media_type\":\"movie\"},{\"id\":453405,\"video\":false,\"vote_count\":1261,\"vote_average\":5.8,\"title\":\"Gemini Man\",\"release_date\":\"2019-10-02\",\"original_language\":\"en\",\"original_title\":\"Gemini Man\",\"genre_ids\":[28,53],\"backdrop_path\":\"/sfW7GcOuwZFuCxVoU5ULlkiDJ7Q.jpg\",\"adult\":false,\"overview\":\"Ageing assassin, Henry Brogen tries to get out of the business but finds himself in the ultimate battle—fighting his own clone who is 25 years younger than him, and at the peak of his abilities.\",\"poster_path\":\"/uTALxjQU8e1lhmNjP9nnJ3t2pRU.jpg\",\"popularity\":59.723,\"media_type\":\"movie\"},{\"id\":522938,\"video\":false,\"vote_count\":1142,\"vote_average\":5.9,\"title\":\"Rambo: Last Blood\",\"release_date\":\"2019-09-19\",\"original_language\":\"en\",\"original_title\":\"Rambo: Last Blood\",\"genre_ids\":[28,18,53],\"backdrop_path\":\"/hl9wGMntYNl4dEYtjgU600GZ8JH.jpg\",\"adult\":false,\"overview\":\"After fighting his demons for decades, John Rambo now lives in peace on his family ranch in Arizona, but his rest is interrupted when Gabriela, the granddaughter of his housekeeper María, disappears after crossing the border into Mexico to meet her biological father. Rambo, who has become a true father figure for Gabriela over the years, undertakes a desperate and dangerous journey to find her.\",\"poster_path\":\"/kTQ3J8oTTKofAVLYnds2cHUz9KO.jpg\",\"popularity\":72.831,\"media_type\":\"movie\"},{\"id\":554241,\"video\":false,\"vote_count\":86,\"vote_average\":6.8,\"title\":\"Playing with Fire\",\"release_date\":\"2019-11-08\",\"original_language\":\"en\",\"original_title\":\"Playing with Fire\",\"genre_ids\":[35,10751],\"backdrop_path\":\"/gqOjAU5ucgrXFszSVq6TynsKHZG.jpg\",\"adult\":false,\"overview\":\"A crew of rugged firefighters meet their match when attempting to rescue three rambunctious kids.\",\"poster_path\":\"/61Ng0t8iMnbWFmARcyBrkaErg4G.jpg\",\"popularity\":57.341,\"media_type\":\"movie\"},{\"id\":504562,\"video\":false,\"vote_count\":244,\"vote_average\":7.0,\"title\":\"Motherless Brooklyn\",\"release_date\":\"2019-10-31\",\"original_language\":\"en\",\"original_title\":\"Motherless Brooklyn\",\"genre_ids\":[18,9648,53],\"backdrop_path\":\"/mJoZVYRTtPI6aMPb1UanuXFC1Zw.jpg\",\"adult\":false,\"overview\":\"Lionel Essrog, a private detective living with Tourette syndrome, ventures to solve the murder of his mentor and best friend — a mystery that carries him from the gin-soaked jazz clubs of Harlem to the slums of Brooklyn to the gilded halls of New York's power brokers.\",\"poster_path\":\"/jjMJy5OxJHpFIaboCklDIYdcfpD.jpg\",\"popularity\":50.395,\"media_type\":\"movie\"},{\"id\":473033,\"video\":false,\"vote_count\":279,\"vote_average\":7.5,\"title\":\"Uncut Gems\",\"release_date\":\"2019-11-14\",\"original_language\":\"en\",\"original_title\":\"Uncut Gems\",\"genre_ids\":[80,18,9648,53],\"backdrop_path\":\"/uzvT6tYrU5SxfHe1ieimIGAqyFm.jpg\",\"adult\":false,\"overview\":\"A charismatic New York City jeweler always on the lookout for the next big score makes a series of high-stakes bets that could lead to the windfall of a lifetime. Howard must perform a precarious high-wire act, balancing business, family, and encroaching adversaries on all sides in his relentless pursuit of the ultimate win.\",\"poster_path\":\"/7gOozJufKJ9WjcIs38KEs08Iq3D.jpg\",\"popularity\":35.091,\"media_type\":\"movie\"},{\"id\":338967,\"video\":false,\"vote_count\":1295,\"vote_average\":7.0,\"title\":\"Zombieland: Double Tap\",\"release_date\":\"2019-10-09\",\"original_language\":\"en\",\"original_title\":\"Zombieland: Double Tap\",\"genre_ids\":[28,35,27],\"backdrop_path\":\"/3ghImmHdp4RnC3UkL6hpLayclnb.jpg\",\"adult\":false,\"overview\":\"Columbus, Tallahassee, Wichita, and Little Rock move to the American heartland as they face off against evolved zombies, fellow survivors, and the growing pains of the snarky makeshift family.\",\"poster_path\":\"/dtRbVsUb5O12WWO54SRpiMtHKC0.jpg\",\"popularity\":44.026,\"media_type\":\"movie\"},{\"id\":511322,\"video\":false,\"vote_count\":120,\"vote_average\":6.6,\"title\":\"The Good Liar\",\"release_date\":\"2019-11-08\",\"original_language\":\"en\",\"original_title\":\"The Good Liar\",\"genre_ids\":[80,18,9648],\"backdrop_path\":\"/qhWuoyUQ01ZzsbNfjbddAoK6uEc.jpg\",\"adult\":false,\"overview\":\"Career con man Roy sets his sights on his latest mark: recently widowed Betty, worth millions. And he means to take it all. But as the two draw closer, what should have been another simple swindle takes on the ultimate stakes.\",\"poster_path\":\"/6kmxXfg3aSWrzUlEPt2L0YD4jz9.jpg\",\"popularity\":49.412,\"media_type\":\"movie\"},{\"id\":466272,\"video\":false,\"vote_count\":4338,\"vote_average\":7.5,\"title\":\"Once Upon a Time… in Hollywood\",\"release_date\":\"2019-07-25\",\"original_language\":\"en\",\"original_title\":\"Once Upon a Time… in Hollywood\",\"genre_ids\":[35,18,53],\"backdrop_path\":\"/yB2hTgz9CTVYjlMWPSl3LPx5nWj.jpg\",\"adult\":false,\"overview\":\"Los Angeles, 1969. TV star Rick Dalton, a struggling actor specializing in westerns, and stuntman Cliff Booth, his best friend, try to survive in a constantly changing movie industry. Dalton is the neighbor of the young and promising actress and model Sharon Tate, who has just married the prestigious Polish director Roman Polanski…\",\"poster_path\":\"/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg\",\"popularity\":72.442,\"media_type\":\"movie\"},{\"id\":496243,\"video\":false,\"vote_count\":2980,\"vote_average\":8.6,\"title\":\"Parasite\",\"release_date\":\"2019-05-30\",\"original_language\":\"ko\",\"original_title\":\"기생충\",\"genre_ids\":[35,18,53],\"backdrop_path\":\"/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg\",\"adult\":false,\"overview\":\"All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.\",\"poster_path\":\"/x23Fqkt00uqV2TzfSiB60hrc3HY.jpg\",\"popularity\":92.327,\"media_type\":\"movie\"},{\"id\":474350,\"video\":false,\"vote_count\":3019,\"vote_average\":6.8,\"title\":\"It Chapter Two\",\"release_date\":\"2019-09-04\",\"original_language\":\"en\",\"original_title\":\"It Chapter Two\",\"genre_ids\":[18,14,27],\"backdrop_path\":\"/8moTOzunF7p40oR5XhlDvJckOSW.jpg\",\"adult\":false,\"overview\":\"27 years after overcoming the malevolent supernatural entity Pennywise, the former members of the Losers' Club, who have grown up and moved away from Derry, are brought back together by a devastating phone call.\",\"poster_path\":\"/zfE0R94v1E8cuKAerbskfD3VfUt.jpg\",\"popularity\":46.823,\"media_type\":\"movie\"},{\"id\":549053,\"video\":false,\"vote_count\":430,\"vote_average\":7.0,\"title\":\"Last Christmas\",\"release_date\":\"2019-11-07\",\"original_language\":\"en\",\"original_title\":\"Last Christmas\",\"genre_ids\":[35,18,10749],\"backdrop_path\":\"/eZ9wYTk9Gy2zYEv8rhRG3IoPuXG.jpg\",\"adult\":false,\"overview\":\"Kate is a young woman has a habit of making bad decisions, and her last date with disaster occurs after she accepts work as Santa's elf for a department store. However, after she meets Tom there, her life takes a new turn.\",\"poster_path\":\"/kDEjffiKgjuGo2DRzsqfjvW0CQh.jpg\",\"popularity\":65.584,\"media_type\":\"movie\"},{\"id\":38700,\"video\":false,\"vote_count\":463,\"vote_average\":6.6,\"title\":\"Bad Boys for Life\",\"release_date\":\"2020-01-15\",\"original_language\":\"en\",\"original_title\":\"Bad Boys for Life\",\"genre_ids\":[28,80,53],\"backdrop_path\":\"/iUspPEAjhUUrLYKntTnKupt3eqV.jpg\",\"adult\":false,\"overview\":\"Marcus and Mike are forced to confront new threats, career changes, and midlife crises as they join the newly created elite team AMMO of the Miami police department to take down the ruthless Armando Armas, the vicious leader of a Miami drug cartel.\",\"poster_path\":\"/y95lQLnuNKdPAzw9F9Ab8kJ80c3.jpg\",\"popularity\":180.005,\"media_type\":\"movie\"},{\"id\":419704,\"video\":false,\"vote_count\":2149,\"vote_average\":6.0,\"title\":\"Ad Astra\",\"release_date\":\"2019-09-17\",\"original_language\":\"en\",\"original_title\":\"Ad Astra\",\"genre_ids\":[12,18,9648,878,53],\"backdrop_path\":\"/5BwqwxMEjeFtdknRV792Svo0K1v.jpg\",\"adult\":false,\"overview\":\"The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.\",\"poster_path\":\"/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg\",\"popularity\":332.845,\"media_type\":\"movie\"},{\"id\":299534,\"video\":false,\"vote_count\":11065,\"vote_average\":8.3,\"title\":\"Avengers: Endgame\",\"release_date\":\"2019-04-24\",\"original_language\":\"en\",\"original_title\":\"Avengers: Endgame\",\"genre_ids\":[28,12,878],\"backdrop_path\":\"/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg\",\"adult\":false,\"overview\":\"After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.\",\"poster_path\":\"/or06FN3Dka5tukK1e9sl16pB3iy.jpg\",\"popularity\":40.027,\"media_type\":\"movie\"}],\"total_pages\":1000,\"total_results\":20000}"
+    const val fakeFeaturedMoviesResponse = "{\n" +
+            "    \"page\": 1,\n" +
+            "    \"results\": [\n" +
+            "        {\n" +
+            "            \"original_name\": \"Star Trek: Picard\",\n" +
+            "            \"id\": 85949,\n" +
+            "            \"name\": \"Star Trek: Picard\",\n" +
+            "            \"vote_count\": 85,\n" +
+            "            \"vote_average\": 8.1,\n" +
+            "            \"first_air_date\": \"2020-01-23\",\n" +
+            "            \"poster_path\": \"/nIlAKIrLKxOeoEnc0Urb65yNCp.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/mK286PAkhgLJqk5cO0BCmFLkNE7.jpg\",\n" +
+            "            \"overview\": \"Set twenty years after the events of Star Trek Nemesis, we follow the now-retired Admiral Picard into the next chapter of his life.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 236.467,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Vikings\",\n" +
+            "            \"id\": 44217,\n" +
+            "            \"name\": \"Vikings\",\n" +
+            "            \"vote_count\": 1948,\n" +
+            "            \"vote_average\": 7.5,\n" +
+            "            \"first_air_date\": \"2013-03-03\",\n" +
+            "            \"poster_path\": \"/ff1zhqvwfS5HvRNcA5UFrH0PA2q.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10759\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/aq2yEMgRQBPfRkrO0Repo2qhUAT.jpg\",\n" +
+            "            \"overview\": \"The adventures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"CA\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 138.885,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Locke & Key\",\n" +
+            "            \"id\": 86423,\n" +
+            "            \"name\": \"Locke & Key\",\n" +
+            "            \"vote_count\": 4,\n" +
+            "            \"vote_average\": 8.5,\n" +
+            "            \"first_air_date\": \"2020-02-07\",\n" +
+            "            \"poster_path\": \"/lKhF0QX724VS2QqBzSZ4KJif3Ny.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10759,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/ahiv2gllg7HfJ52CyWW2aBMmtpT.jpg\",\n" +
+            "            \"overview\": \"Three siblings who move into their ancestral estate after their father's gruesome murder discover their new home's magical keys, which must be used in their stand against an evil creature who wants the keys and their powers.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 43.533,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Chilling Adventures of Sabrina\",\n" +
+            "            \"id\": 79242,\n" +
+            "            \"name\": \"Chilling Adventures of Sabrina\",\n" +
+            "            \"vote_count\": 291,\n" +
+            "            \"vote_average\": 7.8,\n" +
+            "            \"first_air_date\": \"2018-10-26\",\n" +
+            "            \"poster_path\": \"/yxMpoHO0CXP5o9gB7IfsciilQS4.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                9648,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/8AdmUPTyidDebwIuakqkSt6u1II.jpg\",\n" +
+            "            \"overview\": \"As her 16th birthday nears, Sabrina must choose between the witch world of her family and the human world of her friends. Based on the Archie comic.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 51.096,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Ragnarok\",\n" +
+            "            \"id\": 91557,\n" +
+            "            \"name\": \"Ragnarok\",\n" +
+            "            \"vote_count\": 30,\n" +
+            "            \"vote_average\": 8.2,\n" +
+            "            \"first_air_date\": \"2020-01-31\",\n" +
+            "            \"poster_path\": \"/3mBZwTEuN2CejVTeZqVfy2Kx5dY.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10759\n" +
+            "            ],\n" +
+            "            \"original_language\": \"no\",\n" +
+            "            \"backdrop_path\": \"/jM7LHr811U4A6EnY9iMyKhUVsMN.jpg\",\n" +
+            "            \"overview\": \"A small Norwegian town experiencing warm winters and violent downpours seems to be headed for another Ragnarök -- unless someone intervenes in time.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"DK\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 58.896,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"The Stranger\",\n" +
+            "            \"id\": 96608,\n" +
+            "            \"name\": \"The Stranger\",\n" +
+            "            \"vote_count\": 15,\n" +
+            "            \"vote_average\": 7.8,\n" +
+            "            \"first_air_date\": \"2020-01-30\",\n" +
+            "            \"poster_path\": \"/cWGGUIAdlvkvEKhtsdioO8XdDyv.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                9648\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/szfCRkxnMUBWYhoMNzHFPRcNglQ.jpg\",\n" +
+            "            \"overview\": \"A web of secrets sends family man Adam Price on a desperate quest to uncover the truth about the people closest to him.\",\n" +
+            "            \"origin_country\": [],\n" +
+            "            \"popularity\": 66.284,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Sex Education\",\n" +
+            "            \"id\": 81356,\n" +
+            "            \"name\": \"Sex Education\",\n" +
+            "            \"vote_count\": 348,\n" +
+            "            \"vote_average\": 8.1,\n" +
+            "            \"first_air_date\": \"2019-01-11\",\n" +
+            "            \"poster_path\": \"/4Bph0hhnDH6dpc0SZIV522bLm4P.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                35,\n" +
+            "                18\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/61m8HGEWwE4q8oSz3AY5vl5F3BS.jpg\",\n" +
+            "            \"overview\": \"Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"GB\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 71.36,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"The Outsider\",\n" +
+            "            \"id\": 84661,\n" +
+            "            \"name\": \"The Outsider\",\n" +
+            "            \"vote_count\": 29,\n" +
+            "            \"vote_average\": 8.3,\n" +
+            "            \"first_air_date\": \"2020-01-12\",\n" +
+            "            \"poster_path\": \"/aMiPwPQjQI1EZN3xP2V0sSU37dc.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                80,\n" +
+            "                18,\n" +
+            "                9648\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/lmlsqpAfDZnZumcFhbsTrOy9uNZ.jpg\",\n" +
+            "            \"overview\": \"When an insidious supernatural force edges its way into a seemingly straightforward investigation into the gruesome murder of a young boy, it leads a seasoned cop and an unorthodox investigator to question everything they believe in.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 38.084,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Game of Thrones\",\n" +
+            "            \"id\": 1399,\n" +
+            "            \"name\": \"Game of Thrones\",\n" +
+            "            \"vote_count\": 6732,\n" +
+            "            \"vote_average\": 8.2,\n" +
+            "            \"first_air_date\": \"2011-04-17\",\n" +
+            "            \"poster_path\": \"/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/suopoADq0k8YZr4dQXcU6pToj6s.jpg\",\n" +
+            "            \"overview\": \"Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 73.177,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"The Witcher\",\n" +
+            "            \"id\": 71912,\n" +
+            "            \"name\": \"The Witcher\",\n" +
+            "            \"vote_count\": 466,\n" +
+            "            \"vote_average\": 8.1,\n" +
+            "            \"first_air_date\": \"2019-12-20\",\n" +
+            "            \"poster_path\": \"/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/kysKBF2CJG9qfQDSCDaboJrkZy1.jpg\",\n" +
+            "            \"overview\": \"Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 49.987,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Love Island\",\n" +
+            "            \"id\": 66636,\n" +
+            "            \"name\": \"Love Island\",\n" +
+            "            \"vote_count\": 49,\n" +
+            "            \"vote_average\": 5.2,\n" +
+            "            \"first_air_date\": \"2015-06-07\",\n" +
+            "            \"poster_path\": \"/6qwUvkopDFHQq4xYBVXJixYQIRp.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                10764\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/p3Q4oy1AfLC4yA5HzcV8yohSEdI.jpg\",\n" +
+            "            \"overview\": \"A stunning cast engages in the ultimate game of love, as they land in a sunshine paradise in search of passion and romance. Each of the glamorous members of the public will live like celebrities in a luxury villa, but in order to stay there, they will not only have to win over the hearts of each other, but also the hearts of the public.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"GB\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 10.151,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"The Mandalorian\",\n" +
+            "            \"id\": 82856,\n" +
+            "            \"name\": \"The Mandalorian\",\n" +
+            "            \"vote_count\": 600,\n" +
+            "            \"vote_average\": 8.1,\n" +
+            "            \"first_air_date\": \"2019-11-12\",\n" +
+            "            \"poster_path\": \"/BbNvKCuEF4SRzFXR16aK6ISFtR.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                10759,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg\",\n" +
+            "            \"overview\": \"After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 80.708,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Doctor Who\",\n" +
+            "            \"id\": 57243,\n" +
+            "            \"name\": \"Doctor Who\",\n" +
+            "            \"vote_count\": 1604,\n" +
+            "            \"vote_average\": 7.0,\n" +
+            "            \"first_air_date\": \"2005-03-26\",\n" +
+            "            \"poster_path\": \"/cDDb7WA2i7cENhkEEjXEDrXGyNL.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10759,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/nfH8SZJVOxcBlFaqqtoqS5hHizG.jpg\",\n" +
+            "            \"overview\": \"The Doctor is a Time Lord: a 900 year old alien with 2 hearts, part of a gifted civilization who mastered time travel. The Doctor saves planets for a living—more of a hobby actually, and the Doctor's very, very good at it.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"GB\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 93.772,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Arrow\",\n" +
+            "            \"id\": 1412,\n" +
+            "            \"name\": \"Arrow\",\n" +
+            "            \"vote_count\": 3080,\n" +
+            "            \"vote_average\": 5.9,\n" +
+            "            \"first_air_date\": \"2012-10-10\",\n" +
+            "            \"poster_path\": \"/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                80,\n" +
+            "                18,\n" +
+            "                9648,\n" +
+            "                10759\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/dKxkwAJfGuznW8Hu0mhaDJtna0n.jpg\",\n" +
+            "            \"overview\": \"Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 129.377,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"The Flash\",\n" +
+            "            \"id\": 60735,\n" +
+            "            \"name\": \"The Flash\",\n" +
+            "            \"vote_count\": 3190,\n" +
+            "            \"vote_average\": 6.8,\n" +
+            "            \"first_air_date\": \"2014-10-07\",\n" +
+            "            \"poster_path\": \"/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/6ZdQTBy20HzWudZthAV7NkZWfIb.jpg\",\n" +
+            "            \"overview\": \"After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \\\"meta-human\\\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 165.41,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Riverdale\",\n" +
+            "            \"id\": 69050,\n" +
+            "            \"name\": \"Riverdale\",\n" +
+            "            \"vote_count\": 828,\n" +
+            "            \"vote_average\": 7.4,\n" +
+            "            \"first_air_date\": \"2017-01-26\",\n" +
+            "            \"poster_path\": \"/4X7o1ssOEvp4BFLim1AZmPNcYbU.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                9648\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/yVc41GMQw4yujjk6fuuAMMFTt8H.jpg\",\n" +
+            "            \"overview\": \"Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 83.93,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Brooklyn Nine-Nine\",\n" +
+            "            \"id\": 48891,\n" +
+            "            \"name\": \"Brooklyn Nine-Nine\",\n" +
+            "            \"vote_count\": 839,\n" +
+            "            \"vote_average\": 7.8,\n" +
+            "            \"first_air_date\": \"2013-09-17\",\n" +
+            "            \"poster_path\": \"/dzj0oLZWe3qMgK4jlgdKWPVxxIx.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                35,\n" +
+            "                80\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/vbLl9JL0SxemW5OyI9CzCQdlcX3.jpg\",\n" +
+            "            \"overview\": \"A single-camera ensemble comedy following the lives of an eclectic group of detectives in a New York precinct, including one slacker who is forced to shape up when he gets a new boss.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 133.185,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Grey's Anatomy\",\n" +
+            "            \"id\": 1416,\n" +
+            "            \"name\": \"Grey's Anatomy\",\n" +
+            "            \"vote_count\": 1204,\n" +
+            "            \"vote_average\": 6.6,\n" +
+            "            \"first_air_date\": \"2005-03-27\",\n" +
+            "            \"poster_path\": \"/jnsvc7gCKocXnrTXF6p03cICTWb.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/edmk8xjGBsYVIf4QtLY9WMaMcXZ.jpg\",\n" +
+            "            \"overview\": \"Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 114.037,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"DC's Legends of Tomorrow\",\n" +
+            "            \"id\": 62643,\n" +
+            "            \"name\": \"DC's Legends of Tomorrow\",\n" +
+            "            \"vote_count\": 860,\n" +
+            "            \"vote_average\": 6.4,\n" +
+            "            \"first_air_date\": \"2016-01-21\",\n" +
+            "            \"poster_path\": \"/yJ3xE11IDIe29LJsSbhzwt5Oxtd.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                18,\n" +
+            "                10759,\n" +
+            "                10765\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/xOcuDnxTTqNT2CuFNy5VVc67tG4.jpg\",\n" +
+            "            \"overview\": \"When heroes alone are not enough ... the world needs legends. Having seen the future, one he will desperately try to prevent from happening, time-traveling rogue Rip Hunter is tasked with assembling a disparate group of both heroes and villains to confront an unstoppable threat — one in which not only is the planet at stake, but all of time itself. Can this ragtag team defeat an immortal threat unlike anything they have ever known?\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 55.613,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"original_name\": \"Mythic Quest: Raven's Banquet\",\n" +
+            "            \"id\": 94951,\n" +
+            "            \"name\": \"Mythic Quest: Raven's Banquet\",\n" +
+            "            \"vote_count\": 3,\n" +
+            "            \"vote_average\": 5.7,\n" +
+            "            \"first_air_date\": \"2020-02-07\",\n" +
+            "            \"poster_path\": \"/lEPXDqTntfWGWoU4E0xtxhFn2Wj.jpg\",\n" +
+            "            \"genre_ids\": [\n" +
+            "                35\n" +
+            "            ],\n" +
+            "            \"original_language\": \"en\",\n" +
+            "            \"backdrop_path\": \"/2IhKBO07omly3m93PLIXc5VOcam.jpg\",\n" +
+            "            \"overview\": \"Meet the team behind the biggest multiplayer video game of all time. But in a workplace focused on building worlds, molding heroes, and creating legends, the most hard-fought battles don’t occur in the game—they happen in the office.\",\n" +
+            "            \"origin_country\": [\n" +
+            "                \"US\"\n" +
+            "            ],\n" +
+            "            \"popularity\": 50.97,\n" +
+            "            \"media_type\": \"tv\"\n" +
+            "        }\n" +
+            "    ],\n" +
+            "    \"total_pages\": 1000,\n" +
+            "    \"total_results\": 20000\n" +
+            "}"
+    const val imageBaseUrl = "https://image.tmdb.org/t/p/w342"
 }
