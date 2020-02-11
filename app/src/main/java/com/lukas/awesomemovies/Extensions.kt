@@ -7,6 +7,6 @@ import com.moviesprototype.GlideApp
 fun ImageView.loadIntoBaseUrl(posterPath: String){
     GlideApp
         .with(this)
-        .load(Constants.imageBaseUrl.plus(posterPath))
+        .load(Constants.IMAGE_BASE_URL.plus(posterPath))
         .into(this)
 }

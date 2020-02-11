@@ -1,6 +1,5 @@
 package com.lukas.awesomemovies
 
-import com.lukas.awesomemovies.data.JsonParser
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -14,18 +13,5 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-    }
-    @Test
-    fun printFakDAte(){
-        val tekstas = JsonParser.parseJsonMovies()
-        print(
-            """
-                
-                Page : ${tekstas.page}
-                Results : ${tekstas.results.size}
-                title of first item ${tekstas.results[0].title}
-                
-            """.trimIndent()
-        )
     }
 }

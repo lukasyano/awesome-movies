@@ -14,7 +14,7 @@ class HomeViewModel : ViewModel() {
 
     private fun getFavouriteMovies() {
         val favouriteMovies = MoviesRepository.getFavouriteMovies()
-        moviesLiveData.postValue(favouriteMovies)
+      //  moviesLiveData.postValue(favouriteMovies)
     }
 }
 

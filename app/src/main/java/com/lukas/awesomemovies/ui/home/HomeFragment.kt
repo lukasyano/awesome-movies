@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    val homeViewModel by viewModels<HomeViewModel>()
-    val adapter = HomeAdapter()
+    private val homeViewModel by viewModels<HomeViewModel>()
+    private val adapter = HomeAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
