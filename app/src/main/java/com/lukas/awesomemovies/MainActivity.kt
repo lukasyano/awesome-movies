@@ -18,10 +18,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupActionBarWithNavBar() {
-        val topLevelDestinationsId = setOf(R.id.navigation_home,R.id.navigation_discover,R.id.navigation_bookmarks)
+        val topLevelDestinationsId =
+            setOf(R.id.navigation_home, R.id.navigation_discover, R.id.navigation_bookmarks)
         val appConfig = AppBarConfiguration(topLevelDestinationsId)
-        val navController : NavController = findNavController(R.id.mainNavHostFragment)
-        setupActionBarWithNavController(navController,appConfig)
+        val navController: NavController = findNavController(R.id.mainNavHostFragment)
+        setupActionBarWithNavController(navController, appConfig)
         bottomNav.setupWithNavController(navController)
     }
 }

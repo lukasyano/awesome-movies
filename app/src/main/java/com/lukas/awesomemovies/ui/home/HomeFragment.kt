@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
     private val homeViewModel by viewModels<HomeViewModel>()
-    private val adapter = HomeAdapter()
+    private val homeAdapter = HomeAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +26,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycleView.adapter = adapter
+        recycleView.adapter = homeAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
+        observeErrorLiveData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -38,7 +40,17 @@ class HomeFragment : Fragment() {
         homeViewModel.moviesLiveData.observe(
             viewLifecycleOwner,
             Observer {
-                adapter.updateData(it)
+                homeAdapter.updateData(it)
+            }
+        )
+    }
+
+    private fun observeErrorLiveData() {
+        homeViewModel.errorLiveData.observe(
+            viewLifecycleOwner,
+            Observer {
+                Snackbar.make(recycleView,"Error",Snackbar.LENGTH_LONG)
+                    .show()
             }
         )
     }
