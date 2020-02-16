@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
             viewLifecycleOwner,
             Observer { movieEntities ->
                 homeAdapter.updateData(movieEntities)
+                swipeToRefresh.isRefreshing = false
             }
         )
     }
@@ -51,16 +52,15 @@ class HomeFragment : Fragment() {
         homeViewModel.errorLiveData.observe(
             viewLifecycleOwner,
             Observer { error ->
-                Snackbar.make(recycleView, error, Snackbar.LENGTH_LONG)
-                    .show()
+                recycleView.snack(error)
+                swipeToRefresh.isRefreshing = false
             }
         )
     }
 
     private fun setupPullToRefresh() {
         swipeToRefresh.setOnRefreshListener {
-        swipeToRefresh.snack("Geras")
-            swipeToRefresh.isRefreshing = false
+            homeViewModel.onSwipeToRefresh()
         }
     }
 }

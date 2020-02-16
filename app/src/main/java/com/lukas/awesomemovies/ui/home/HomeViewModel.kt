@@ -17,6 +17,10 @@ class HomeViewModel : ViewModel() {
         getFavouriteMovies()
     }
 
+    fun onSwipeToRefresh(){
+        getFavouriteMovies()
+    }
+
     private fun getFavouriteMovies() {
         val observable: Observable<List<MovieEntity>> = MoviesRepository.getTrendingMovies()
 
@@ -32,4 +36,3 @@ class HomeViewModel : ViewModel() {
         disposable.dispose()
     }
 }
-
