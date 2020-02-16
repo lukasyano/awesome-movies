@@ -1,13 +1,16 @@
 package com.lukas.awesomemovies.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
+import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -30,6 +33,7 @@ class HomeFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
         observeErrorLiveData()
+        setupPullToRefresh()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -39,8 +43,8 @@ class HomeFragment : Fragment() {
     private fun observeMoviesLiveData() {
         homeViewModel.moviesLiveData.observe(
             viewLifecycleOwner,
-            Observer {
-                homeAdapter.updateData(it)
+            Observer { movies ->
+                homeAdapter.updateData(movies)
             }
         )
     }
@@ -48,10 +52,17 @@ class HomeFragment : Fragment() {
     private fun observeErrorLiveData() {
         homeViewModel.errorLiveData.observe(
             viewLifecycleOwner,
-            Observer {
-                Snackbar.make(recycleView,"Error",Snackbar.LENGTH_LONG)
+            Observer { error ->
+                Snackbar.make(recycleView, error, Snackbar.LENGTH_LONG)
                     .show()
             }
         )
+    }
+
+    private fun setupPullToRefresh() {
+        swipeToRefresh.setOnRefreshListener {
+        swipeToRefresh.snack("Geras")
+            swipeToRefresh.isRefreshing = false
+        }
     }
 }

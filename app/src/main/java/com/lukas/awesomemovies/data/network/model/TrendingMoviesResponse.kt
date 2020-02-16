@@ -1,4 +1,4 @@
-package com.lukas.awesomemovies.data
+package com.lukas.awesomemovies.data.network.model
 
 data class TrendingMoviesResponse(
     val page: Int,

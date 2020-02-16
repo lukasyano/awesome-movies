@@ -39,6 +39,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     // Navigation
     def navigation = "2.2.1"
     implementation "androidx.navigation:navigation-fragment:$navigation"
