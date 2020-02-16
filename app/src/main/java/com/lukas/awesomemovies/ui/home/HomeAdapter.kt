@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
-import com.lukas.awesomemovies.data.network.model.Movie
 import com.lukas.awesomemovies.loadIntoBaseUrl
+import com.lukas.awesomemovies.repository.entity.MovieEntity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
 
-    private var data: List<Movie> = emptyList()
+    private var data: List<MovieEntity> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,28 +25,28 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        val movie = data[position]
+        val movieEntity = data[position]
 
         holder.rootView.setOnClickListener {
-            onRootItemClicked(movie,it)
+            onRootItemClicked(movieEntity,it)
         }
         holder.bookmarksImageView.setOnClickListener{
             onBookmarksItemClick(it)
         }
-        holder.titleView.text = movie.title
-        holder.descriptionView.text = movie.overview
-        holder.mainImageView.loadIntoBaseUrl(movie.posterPath)
+        holder.titleView.text = movieEntity.title
+        holder.descriptionView.text = movieEntity.overview
+        holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)
     }
 
     private fun onBookmarksItemClick(view: View) {
         Snackbar.make(view,"Issaugotas Bookmarkuose", Snackbar.LENGTH_LONG).show()
     }
 
-    private fun onRootItemClicked(movie: Movie, view: View) {
+    private fun onRootItemClicked(movie: MovieEntity, view: View) {
         Snackbar.make(view, movie.popularity.toString(), Snackbar.LENGTH_LONG).show()
     }
 
-    fun updateData(data: List<Movie>) {
+    fun updateData(data: List<MovieEntity>) {
         this.data = data
         notifyDataSetChanged()
     }

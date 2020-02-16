@@ -1,13 +1,11 @@
 package com.lukas.awesomemovies.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.snack
@@ -43,8 +41,8 @@ class HomeFragment : Fragment() {
     private fun observeMoviesLiveData() {
         homeViewModel.moviesLiveData.observe(
             viewLifecycleOwner,
-            Observer { movies ->
-                homeAdapter.updateData(movies)
+            Observer { movieEntities ->
+                homeAdapter.updateData(movieEntities)
             }
         )
     }
