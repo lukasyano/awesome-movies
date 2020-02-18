@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.lukas.awesomemovies.R
+import com.lukas.awesomemovies.loadIntoBaseUrl
+import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.activity_details.*
 
@@ -20,15 +22,19 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        observeDetailsData()
+       observeDetailsData()
         detailsViewModel.getMovieDetails(movieId)
     }
 
     private fun observeDetailsData(){
         detailsViewModel.liveData.observe(
             this, Observer {
-                root.snack(it.toString())
+                    setUi(it)
             }
         )
+    }
+
+    private fun setUi(entity : MovieDetailsEntity){
+        mainImageV.loadIntoBaseUrl(entity.posterPath)
     }
 }

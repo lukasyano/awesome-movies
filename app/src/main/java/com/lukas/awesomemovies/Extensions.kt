@@ -10,6 +10,7 @@ fun ImageView.loadIntoBaseUrl(posterPath: String){
     GlideApp
         .with(this)
         .load(Constants.IMAGE_BASE_URL.plus(posterPath))
+        .centerCrop()
         .into(this)
 }
 
