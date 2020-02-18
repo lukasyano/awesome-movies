@@ -1,7 +1,6 @@
 package com.lukas.awesomemovies
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -9,7 +8,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupActionBarWithNavBar() {
         val topLevelDestinationsId =
-            setOf(R.id.navigation_home, R.id.navigation_discover, R.id.navigation_bookmarks)
+            setOf(R.id.navigation_home, R.id.navigation_discover, R.id.navigation_bookmarks, R.id.navigation_movie_details)
         val appConfig = AppBarConfiguration(topLevelDestinationsId)
         val navController: NavController = findNavController(R.id.mainNavHostFragment)
         setupActionBarWithNavController(navController, appConfig)

@@ -3,6 +3,7 @@ package com.lukas.awesomemovies.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
@@ -43,7 +44,11 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
     }
 
     private fun onRootItemClicked(movie: MovieEntity, view: View) {
-        Snackbar.make(view, movie.popularity.toString(), Snackbar.LENGTH_LONG).show()
+        view.findNavController()
+            .navigate(
+                HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movie.id)
+            )
+
     }
 
     fun updateData(data: List<MovieEntity>) {
