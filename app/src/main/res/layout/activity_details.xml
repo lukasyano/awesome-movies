@@ -5,130 +5,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/mainImageV"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_marginTop="@dimen/medium_space"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/details_movie_title"
-        app:srcCompat="@android:color/background_dark" />
+        <ImageView
+            android:id="@+id/mainImageV"
+            android:layout_width="match_parent"
+            android:layout_height="342dp"
+            android:layout_marginTop="@dimen/medium_space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_movie_title" />
 
-    <TextView
-        android:id="@+id/details_movie_title"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_space"
-        android:text="MADAGASKARAS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/details_movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/large_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/years_plus_duration"
-        android:layout_width="164dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="@dimen/medium_space"
-        android:layout_marginEnd="@dimen/medium_space"
-        android:text="Metai ir filmo trukme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
-
-    <Button
-        android:id="@+id/add_to_bookmarks"
-        android:layout_width="365dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="@dimen/medium_space"
-        android:layout_marginTop="@dimen/medium_space"
-        android:layout_marginEnd="@dimen/small_space"
-        android:text="ADD TO BOOKMARKS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/describe" />
-
-    <TextView
-        android:id="@+id/describe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_space"
-        android:layout_marginStart="@dimen/medium_space"
-        android:text="getDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup2" />
-
-    <TextView
-        android:id="@+id/language"
-        android:layout_width="180dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="@dimen/medium_space"
-        android:layout_marginTop="@dimen/medium_space"
-        android:text="LANGUAGE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium_space"
-        android:layout_marginEnd="@dimen/medium_space"
-        android:layout_marginTop="@dimen/large_space"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/years_plus_duration">
-
-        <com.google.android.material.chip.Chip
+        <TextView
+            android:id="@+id/years"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Horror" />
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/medium_space"
+            android:maxLength="4"
+            app:layout_constraintStart_toEndOf="@+id/language"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
 
-        <com.google.android.material.chip.Chip
+        <Button
+            android:id="@+id/add_to_bookmarks"
+            android:layout_width="365dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:text="Add To Bookmarks"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/describe" />
+
+        <TextView
+            android:id="@+id/describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:text="getDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModelgetDetailsViewModel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup2" />
+
+        <TextView
+            android:id="@+id/language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Horror" />
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/medium_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
 
-        <com.google.android.material.chip.Chip
+        <TextView
+            android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Horror" />
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/medium_space"
+            app:layout_constraintStart_toEndOf="@+id/years"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Horror" />
+            android:layout_marginStart="@dimen/medium_space"
+            android:layout_marginTop="@dimen/large_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/years">
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horror" />
-    </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
 
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
