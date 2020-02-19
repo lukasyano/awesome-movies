@@ -1,5 +1,6 @@
 package com.lukas.awesomemovies.ui.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,6 @@ import androidx.navigation.navArgs
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
-import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
@@ -26,15 +26,21 @@ class DetailsActivity : AppCompatActivity() {
         detailsViewModel.getMovieDetails(movieId)
     }
 
-    private fun observeDetailsData(){
+    private fun observeDetailsData() {
         detailsViewModel.liveData.observe(
             this, Observer {
-                    setUi(it)
+                setUi(it)
             }
         )
     }
 
-    private fun setUi(entity : MovieDetailsEntity){
+    @SuppressLint("SetTextI18n")
+    private fun setUi(entity: MovieDetailsEntity) {
         mainImageV.loadIntoBaseUrl(entity.posterPath)
+        details_movie_title.text = entity.title
+        language.text = entity.originalLanguage
+        years.text = entity.releaseDate
+        duration.text = "${(entity.runtime / 60)}h ${(entity.runtime % 60)}min"
+        describe.text = entity.overview
     }
 }
