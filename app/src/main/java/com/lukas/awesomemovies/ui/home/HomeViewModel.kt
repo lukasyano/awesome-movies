@@ -2,6 +2,7 @@ package com.lukas.awesomemovies.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.lukas.awesomemovies.data.network.MoviesService
 import com.lukas.awesomemovies.repository.MoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Observable
@@ -12,17 +13,19 @@ class HomeViewModel : ViewModel() {
     var moviesLiveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
     var errorLiveData: MutableLiveData<String> = MutableLiveData()
     lateinit var disposable: Disposable
+    private lateinit var movieService: MoviesService
 
-    init {
+    fun setService(movieService: MoviesService) {
+        this.movieService = movieService
+    }
+
+    fun onSwipeToRefresh() {
         getFavouriteMovies()
     }
 
-    fun onSwipeToRefresh(){
-        getFavouriteMovies()
-    }
-
-    private fun getFavouriteMovies() {
-        val observable: Observable<List<MovieEntity>> = MoviesRepository.getTrendingMovies()
+    fun getFavouriteMovies() {
+        val observable: Observable<List<MovieEntity>> =
+            MoviesRepository(movieService).getTrendingMovies()
 
         disposable = observable
             .subscribe(

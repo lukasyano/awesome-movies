@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
+import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -31,7 +31,15 @@ class HomeFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
         observeErrorLiveData()
+
         setupPullToRefresh()
+        setNetworkService()
+        homeViewModel.getFavouriteMovies()
+    }
+
+    private fun setNetworkService() {
+        val application = activity!!.application as AMoviesApplication
+        homeViewModel.setService(application.movieService)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

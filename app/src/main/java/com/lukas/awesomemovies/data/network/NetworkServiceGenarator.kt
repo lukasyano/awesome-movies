@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object NetworkServiceGenerator {
+class NetworkServiceGenerator {
 
     private val httpClient = OkHttpClient.Builder()
         .addInterceptor(object : Interceptor {
@@ -30,13 +30,10 @@ object NetworkServiceGenerator {
         })
         .build()
 
-    private val retrofit = Retrofit.Builder()
+    val retrofit = Retrofit.Builder()
         .baseUrl(Constants.MOVIES_DB_BASE_URL)
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
-
-    val service = retrofit.create(MoviesService::class.java)
-
 }

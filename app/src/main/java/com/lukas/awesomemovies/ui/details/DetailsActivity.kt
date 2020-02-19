@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
+import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
@@ -22,8 +23,9 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-       observeDetailsData()
-        detailsViewModel.getMovieDetails(movieId)
+        observeDetailsData()
+        val application = application as AMoviesApplication
+        detailsViewModel.getMovieDetails(application.movieService, movieId)
     }
 
     private fun observeDetailsData() {
