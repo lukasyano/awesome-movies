@@ -13,10 +13,10 @@ class HomeViewModel : ViewModel() {
     var moviesLiveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
     var errorLiveData: MutableLiveData<String> = MutableLiveData()
     lateinit var disposable: Disposable
-    private lateinit var movieService: MoviesService
+    private lateinit var repository: MoviesRepository
 
-    fun setService(movieService: MoviesService) {
-        this.movieService = movieService
+    fun setRepository(repository: MoviesRepository) {
+        this.repository = repository
     }
 
     fun onSwipeToRefresh() {
@@ -25,7 +25,7 @@ class HomeViewModel : ViewModel() {
 
     fun getFavouriteMovies() {
         val observable: Observable<List<MovieEntity>> =
-            MoviesRepository(movieService).getTrendingMovies()
+            repository.getTrendingMovies()
 
         disposable = observable
             .subscribe(

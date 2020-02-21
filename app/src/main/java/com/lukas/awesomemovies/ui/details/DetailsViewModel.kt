@@ -8,16 +8,16 @@ import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import io.reactivex.disposables.Disposable
 
 class DetailsViewModel : ViewModel() {
-    var liveData : MutableLiveData<MovieDetailsEntity> = MutableLiveData()
-    lateinit var disposable : Disposable
+    var liveData: MutableLiveData<MovieDetailsEntity> = MutableLiveData()
+    lateinit var disposable: Disposable
 
-    fun getMovieDetails(movieService : MoviesService, movieId : Int){
-      val observable = MoviesRepository(movieService).getMovieDetails(movieId)
+    fun getMovieDetails(repository: MoviesRepository, movieId: Int) {
+        val observable = repository.getMovieDetails(movieId)
 
-       disposable = observable
-           .subscribe {
-           liveData.postValue(it)
-        }
+        disposable = observable
+            .subscribe {
+                liveData.postValue(it)
+            }
     }
 
     override fun onCleared() {

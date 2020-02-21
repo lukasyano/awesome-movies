@@ -25,7 +25,7 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         observeDetailsData()
         val application = application as AMoviesApplication
-        detailsViewModel.getMovieDetails(application.movieService, movieId)
+        detailsViewModel.getMovieDetails(application.moviesRepository, movieId)
     }
 
     private fun observeDetailsData() {

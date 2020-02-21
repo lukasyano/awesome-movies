@@ -33,13 +33,13 @@ class HomeFragment : Fragment() {
         observeErrorLiveData()
 
         setupPullToRefresh()
-        setNetworkService()
+        setRepository()
         homeViewModel.getFavouriteMovies()
     }
 
-    private fun setNetworkService() {
+    private fun setRepository() {
         val application = activity!!.application as AMoviesApplication
-        homeViewModel.setService(application.movieService)
+        homeViewModel.setRepository(application.moviesRepository)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

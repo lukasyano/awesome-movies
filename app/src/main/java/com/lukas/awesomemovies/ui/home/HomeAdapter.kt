@@ -29,18 +29,18 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
         val movieEntity = data[position]
 
         holder.rootView.setOnClickListener {
-            onRootItemClicked(movieEntity,it)
+            onRootItemClicked(movieEntity, it)
         }
-        holder.bookmarksImageView.setOnClickListener{
-            onBookmarksItemClick(it)
+        holder.bookmarksImageView.setOnClickListener {
+            onBookmarksItemClick(movieEntity, it)
         }
         holder.titleView.text = movieEntity.title
         holder.descriptionView.text = movieEntity.overview
         holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)
     }
 
-    private fun onBookmarksItemClick(view: View) {
-        Snackbar.make(view,"Issaugotas Bookmarkuose", Snackbar.LENGTH_LONG).show()
+    private fun onBookmarksItemClick(movie: MovieEntity, view: View) {
+
     }
 
     private fun onRootItemClicked(movie: MovieEntity, view: View) {
