@@ -10,11 +10,12 @@ import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.movie_list_item.*
 
 class HomeFragment : Fragment() {
 
     private val homeViewModel by viewModels<HomeViewModel>()
-    private val homeAdapter = HomeAdapter()
+    lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,23 +28,30 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val application = activity!!.application as AMoviesApplication
+        application.moviesRepository.let {
+            homeAdapter = HomeAdapter(it)
+            homeViewModel.setRepository(it)
+        }
+
         recycleView.adapter = homeAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
         observeErrorLiveData()
 
         setupPullToRefresh()
-        setRepository()
         homeViewModel.getFavouriteMovies()
-    }
-
-    private fun setRepository() {
-        val application = activity!!.application as AMoviesApplication
-        homeViewModel.setRepository(application.moviesRepository)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val application = activity!!.application as AMoviesApplication
+        root.snack(application.moviesRepository.readAllBookmarks().size.toString())
+        return true
     }
 
     private fun observeMoviesLiveData() {

@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
+import com.lukas.awesomemovies.repository.MoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
+class HomeAdapter(private val repository: MoviesRepository) : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
 
     private var data: List<MovieEntity> = emptyList()
 
@@ -40,7 +40,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
     }
 
     private fun onBookmarksItemClick(movie: MovieEntity, view: View) {
-
+        repository.saveMovieToBookmarks(movie)
     }
 
     private fun onRootItemClicked(movie: MovieEntity, view: View) {
@@ -48,7 +48,6 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
             .navigate(
                 HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movie.id)
             )
-
     }
 
     fun updateData(data: List<MovieEntity>) {
