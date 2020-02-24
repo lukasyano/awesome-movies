@@ -10,7 +10,6 @@ import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.movie_list_item.*
 
 class HomeFragment : Fragment() {
 
@@ -50,7 +49,7 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val application = activity!!.application as AMoviesApplication
-        root.snack(application.moviesRepository.readAllBookmarks().size.toString())
+        recycleView.snack(application.moviesRepository.readAllBookmarks().size.toString())
         return true
     }
 

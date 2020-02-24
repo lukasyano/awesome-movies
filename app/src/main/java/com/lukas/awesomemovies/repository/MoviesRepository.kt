@@ -44,4 +44,13 @@ class MoviesRepository(private val movieService: MoviesService) {
 
     fun readAllBookmarks() =
         Paper.book().read<MutableSet<MovieEntity>>(Constants.BOOKMARKS_FILE, mutableSetOf())
+
+    fun removeBookmark(movie: MovieEntity){
+        val allBookmarks = readAllBookmarks()
+        val bookmarkedMovie = allBookmarks.find {
+            it.id == movie.id
+        }
+        allBookmarks.remove(bookmarkedMovie)
+        Paper.book().write<Set<MovieEntity>>(Constants.BOOKMARKS_FILE, allBookmarks)
+    }
 }
