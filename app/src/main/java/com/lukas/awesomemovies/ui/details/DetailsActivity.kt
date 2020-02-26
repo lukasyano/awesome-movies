@@ -2,15 +2,14 @@ package com.lukas.awesomemovies.ui.details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
-import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import kotlinx.android.synthetic.main.activity_details.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -18,14 +17,13 @@ class DetailsActivity : AppCompatActivity() {
         navArgs<DetailsActivityArgs>().value.movieId
     }
 
-    private val detailsViewModel by viewModels<DetailsViewModel>()
+    private val detailsViewModel : DetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         observeDetailsData()
-        val application = application as AMoviesApplication
-        detailsViewModel.getMovieDetails(application.moviesRepository, movieId)
+        detailsViewModel.getMovieDetails(movieId)
     }
 
     private fun observeDetailsData() {

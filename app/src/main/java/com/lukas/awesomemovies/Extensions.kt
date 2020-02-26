@@ -5,8 +5,9 @@ import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.data.Constants
 import com.moviesprototype.GlideApp
+import timber.log.Timber
 
-fun ImageView.loadIntoBaseUrl(posterPath: String){
+fun ImageView.loadIntoBaseUrl(posterPath: String) {
     GlideApp
         .with(this)
         .load(Constants.IMAGE_BASE_URL.plus(posterPath))
@@ -14,6 +15,13 @@ fun ImageView.loadIntoBaseUrl(posterPath: String){
         .into(this)
 }
 
-fun View.snack(text : String){
-    Snackbar.make(this,text,Snackbar.LENGTH_LONG).show()
+fun View.snack(text: String) {
+    Snackbar.make(this, text, Snackbar.LENGTH_LONG).show()
+}
+
+fun logTimberWithTag(msg: Any, tag: String = "TIMBER_DEBUG_TAG") {
+    Timber.tag(tag).d(
+        """ :airplane: logging ...
+    :medal: $msg """.trimIndent()
+    )
 }

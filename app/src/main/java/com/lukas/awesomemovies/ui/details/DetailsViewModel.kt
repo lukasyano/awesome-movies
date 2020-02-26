@@ -2,16 +2,15 @@ package com.lukas.awesomemovies.ui.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lukas.awesomemovies.data.network.MoviesService
 import com.lukas.awesomemovies.repository.MoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import io.reactivex.disposables.Disposable
 
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel(private val repository: MoviesRepository) : ViewModel() {
     var liveData: MutableLiveData<MovieDetailsEntity> = MutableLiveData()
     lateinit var disposable: Disposable
 
-    fun getMovieDetails(repository: MoviesRepository, movieId: Int) {
+    fun getMovieDetails(movieId: Int) {
         val observable = repository.getMovieDetails(movieId)
 
         disposable = observable

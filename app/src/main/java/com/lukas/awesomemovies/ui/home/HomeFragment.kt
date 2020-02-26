@@ -3,17 +3,16 @@ package com.lukas.awesomemovies.ui.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lukas.awesomemovies.AMoviesApplication
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val homeViewModel : HomeViewModel by viewModel()
     lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
@@ -28,12 +27,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val application = activity!!.application as AMoviesApplication
-        application.moviesRepository.let {
-            homeAdapter = HomeAdapter()
-            homeViewModel.setRepository(it)
-        }
-
+        homeAdapter = HomeAdapter()
         recycleView.adapter = homeAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()

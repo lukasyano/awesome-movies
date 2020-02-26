@@ -1,34 +1,24 @@
 package com.lukas.awesomemovies
 
 import android.app.Application
-import com.lukas.awesomemovies.data.network.MoviesService
-import com.lukas.awesomemovies.data.network.NetworkServiceGenerator
-import com.lukas.awesomemovies.repository.MoviesRepository
+import com.lukas.awesomemovies.di.networkModule
+import com.lukas.awesomemovies.di.repositoryModule
+import com.lukas.awesomemovies.di.viewModelModule
 import io.paperdb.Paper
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import timber.log.Timber
 
 class AMoviesApplication : Application() {
-
-     private val mainModule = module{
-        single { MoviesRepository(get()) }
-        single { NetworkServiceGenerator().retrofit.create(MoviesService::class.java) }
-    }
-
-    lateinit var moviesRepository: MoviesRepository
 
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
             androidContext(this@AMoviesApplication)
-            modules(mainModule)
+            modules(networkModule, repositoryModule, viewModelModule)
         }
 
-        val movieService = NetworkServiceGenerator().retrofit.create(MoviesService::class.java)
-        moviesRepository = MoviesRepository(movieService)
         Paper.init(this)
 
         if (BuildConfig.DEBUG) {
