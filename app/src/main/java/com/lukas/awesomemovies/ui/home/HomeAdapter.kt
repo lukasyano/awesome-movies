@@ -8,12 +8,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
-import com.lukas.awesomemovies.repository.MoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class HomeAdapter(private val repository: MoviesRepository) :
-    RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
 
     private var data: List<MovieEntity> = emptyList()
 
@@ -29,13 +27,13 @@ class HomeAdapter(private val repository: MoviesRepository) :
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
         val movieEntity = data[position]
-        val bookmarkMovies = repository.readAllBookmarks()
-
-        val foundMovie = bookmarkMovies.find {
-            it.id == movieEntity.id
-        }
-
-        holder.bookmarksImageView.isSelected = foundMovie != null
+//        val bookmarkMovies = repository.readAllBookmarks()
+//
+//        val foundMovie = bookmarkMovies.find {
+//            it.id == movieEntity.id
+//        }
+//
+//        holder.bookmarksImageView.isSelected = foundMovie != null
 
         holder.rootView.setOnClickListener {
             onRootItemClicked(movieEntity, it)
@@ -49,15 +47,15 @@ class HomeAdapter(private val repository: MoviesRepository) :
     }
 
     private fun onBookmarksItemClick(movie: MovieEntity, button: ImageButton) {
-        button.run {
-            if (isSelected) {
-                isSelected = false
-                repository.removeBookmark(movie)
-            } else {
-                isSelected = true
-                repository.saveMovieToBookmarks(movie)
-            }
-        }
+//        button.run {
+//            if (isSelected) {
+//                isSelected = false
+//                repository.removeBookmark(movie)
+//            } else {
+//                isSelected = true
+//                repository.saveMovieToBookmarks(movie)
+//            }
+//        }
     }
 
     private fun onRootItemClicked(movie: MovieEntity, view: View) {

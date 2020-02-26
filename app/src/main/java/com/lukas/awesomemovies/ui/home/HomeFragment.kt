@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
 
         val application = activity!!.application as AMoviesApplication
         application.moviesRepository.let {
-            homeAdapter = HomeAdapter(it)
+            homeAdapter = HomeAdapter()
             homeViewModel.setRepository(it)
         }
 
@@ -45,12 +45,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.options_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val application = activity!!.application as AMoviesApplication
-        recycleView.snack(application.moviesRepository.readAllBookmarks().size.toString())
-        return true
     }
 
     private fun observeMoviesLiveData() {

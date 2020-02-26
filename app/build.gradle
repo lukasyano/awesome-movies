@@ -70,18 +70,13 @@ dependencies {
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    // Koin Extended & experimental features
+    // Koin
     implementation "org.koin:koin-core-ext:$koin_version"
-
-    // Koin for Unit tests
-    testImplementation "org.koin:koin-test:$koin_version"
-
-    // Koin AndroidX Scope features
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    // Koin AndroidX ViewModel features
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }
