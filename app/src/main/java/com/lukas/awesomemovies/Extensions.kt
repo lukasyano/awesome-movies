@@ -20,8 +20,5 @@ fun View.snack(text: String) {
 }
 
 fun logTimberWithTag(msg: Any, tag: String = "TIMBER_DEBUG_TAG") {
-    Timber.tag(tag).d(
-        """ :airplane: logging ...
-    :medal: $msg """.trimIndent()
-    )
+    Timber.tag(tag).d(msg.toString())
 }
