@@ -1,10 +1,8 @@
 package com.lukas.awesomemovies.repository
 
-import com.lukas.awesomemovies.data.Constants
 import com.lukas.awesomemovies.data.network.MoviesService
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import io.paperdb.Paper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -25,6 +23,7 @@ class MoviesRepository(private val movieService: MoviesService) {
         }
     }
 
+
     fun getMovieDetails(movieId: Int): Observable<MovieDetailsEntity> {
         val observable =
             movieService.getMovieDetails(movieId)
@@ -34,23 +33,5 @@ class MoviesRepository(private val movieService: MoviesService) {
         return observable.map {
             Mapper.mapMovieDetails(it)
         }
-    }
-
-    fun saveMovieToBookmarks(movie: MovieEntity) {
-        val allBookmarks = readAllBookmarks()
-        allBookmarks.add(movie)
-        Paper.book().write<Set<MovieEntity>>(Constants.BOOKMARKS_FILE, allBookmarks)
-    }
-
-    fun readAllBookmarks() =
-        Paper.book().read<MutableSet<MovieEntity>>(Constants.BOOKMARKS_FILE, mutableSetOf())
-
-    fun removeBookmark(movie: MovieEntity){
-        val allBookmarks = readAllBookmarks()
-        val bookmarkedMovie = allBookmarks.find {
-            it.id == movie.id
-        }
-        allBookmarks.remove(bookmarkedMovie)
-        Paper.book().write<Set<MovieEntity>>(Constants.BOOKMARKS_FILE, allBookmarks)
     }
 }

@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
+import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
+import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment() ,MovieListener{
 
     private val homeViewModel : HomeViewModel by viewModel()
-    lateinit var homeAdapter: HomeAdapter
+    private lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,12 +30,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeAdapter = HomeAdapter()
+        homeAdapter = HomeAdapter(this)
         recycleView.adapter = homeAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
         observeErrorLiveData()
-
         setupPullToRefresh()
         homeViewModel.getFavouriteMovies()
     }
@@ -44,8 +46,8 @@ class HomeFragment : Fragment() {
     private fun observeMoviesLiveData() {
         homeViewModel.moviesLiveData.observe(
             viewLifecycleOwner,
-            Observer { movieEntities ->
-                homeAdapter.updateData(movieEntities)
+            Observer {
+                homeAdapter.updateData(it)
                 swipeToRefresh.isRefreshing = false
             }
         )
@@ -66,4 +68,21 @@ class HomeFragment : Fragment() {
             homeViewModel.onSwipeToRefresh()
         }
     }
+
+    override fun onMovieClick(movieId: Int) {
+
+        view?.let {
+            findNavController(it)
+                .navigate(
+                    HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movieId)
+                )
+        }
+    }
+
+    override fun onBookmarksClick(movieId: MovieEntity){
+        homeViewModel.onBookmarkIconClicked(movieId)
+    }
 }
+
+
+

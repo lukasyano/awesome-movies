@@ -11,6 +11,7 @@ object Mapper {
         val movies = mutableListOf<MovieEntity>()
 
         response.results.forEach {
+
             val movieEntity = MovieEntity(
                 id = it.id,
                 title = it.title,
@@ -20,7 +21,8 @@ object Mapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
-                posterPath = it.posterPath
+                posterPath = it.posterPath,
+                isBookmarked = false
             )
             movies.add(movieEntity)
         }
@@ -47,4 +49,5 @@ object Mapper {
             releaseDate = response.release_date
         )
     }
+
 }

@@ -32,6 +32,7 @@
         <argument
             android:name="movieId"
             app:argType="integer" />
+
     </activity>
 
 </navigation>

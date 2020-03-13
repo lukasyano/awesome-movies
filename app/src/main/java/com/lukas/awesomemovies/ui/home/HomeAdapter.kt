@@ -3,14 +3,14 @@ package com.lukas.awesomemovies.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieEntity
+import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
+class HomeAdapter(private val listener: MovieListener) : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
 
     private var data: List<MovieEntity> = emptyList()
 
@@ -28,20 +28,15 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
         val movieEntity = data[position]
 
         holder.rootView.setOnClickListener {
-            onRootItemClicked(movieEntity, it)
+           listener.onMovieClick(movieEntity.id)
         }
         holder.bookmarksImageView.setOnClickListener {
+            listener.onBookmarksClick(movieEntity)
         }
+        holder.bookmarksImageView.isSelected = movieEntity.isBookmarked
         holder.titleView.text = movieEntity.title
         holder.descriptionView.text = movieEntity.overview
         holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)
-    }
-
-    private fun onRootItemClicked(movie: MovieEntity, view: View) {
-        view.findNavController()
-            .navigate(
-                HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movie.id)
-            )
     }
 
     fun updateData(data: List<MovieEntity>) {
