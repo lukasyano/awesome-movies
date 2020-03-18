@@ -16,9 +16,16 @@ class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
     lateinit var bookmarkDisposable: Disposable
     lateinit var bookmarkDeleteDisposable: Disposable
 
+    //TODO
     fun onSwipeToRefresh() {
-        getFavouriteMovies()
+       // getFavouriteMovies()
+        repository.getBookmarkedMovies()
+            .subscribe(
+            { logTimberWithTag(it) },
+            { logTimberWithTag(it.message.toString()) }
+        )
     }
+
 
     fun getFavouriteMovies() {
         val observable: Observable<List<MovieEntity>> =

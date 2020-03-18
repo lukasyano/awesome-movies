@@ -15,7 +15,7 @@ object Mapper {
             val movieEntity = MovieEntity(
                 id = it.id,
                 title = it.title,
-                genreIds = it.genreIds,
+                //genreIds = it.genreIds,
                 popularity = it.popularity,
                 overview = it.overview,
                 releaseDate = it.releaseDate,

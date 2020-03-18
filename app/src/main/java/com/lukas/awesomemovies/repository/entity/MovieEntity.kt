@@ -1,9 +1,14 @@
 package com.lukas.awesomemovies.repository.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "movies")
 data class MovieEntity(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val title: String,
-    val genreIds: List<Int>,
+//    @Embedded(prefix = "genre_")
+//    val genreIds: List<Int>,
     val popularity: Double,
     val overview: String,
     val releaseDate: String,

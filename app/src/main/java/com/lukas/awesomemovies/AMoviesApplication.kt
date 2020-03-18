@@ -1,6 +1,7 @@
 package com.lukas.awesomemovies
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.lukas.awesomemovies.di.moviesDatabaseModule
 import com.lukas.awesomemovies.di.networkModule
 import com.lukas.awesomemovies.di.repositoryModule
@@ -13,6 +14,7 @@ class AMoviesApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Stetho.initializeWithDefaults(this)
 
         startKoin {
             androidContext(this@AMoviesApplication)
