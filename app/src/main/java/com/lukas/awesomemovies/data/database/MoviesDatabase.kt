@@ -8,5 +8,4 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 abstract class MoviesDatabase : RoomDatabase() {
 
     abstract fun moviesDao(): MoviesDao
-
 }

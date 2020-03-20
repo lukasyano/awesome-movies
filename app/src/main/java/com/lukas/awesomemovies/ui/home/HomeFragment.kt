@@ -80,9 +80,6 @@ class HomeFragment : Fragment() ,MovieListener{
     }
 
     override fun onBookmarksClick(movieId: MovieEntity){
-        homeViewModel.onBookmarkIconClicked(movieId)
+        homeViewModel.updateBookmark(movieId)
     }
 }
-
-
-

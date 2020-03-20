@@ -6,61 +6,44 @@ import com.lukas.awesomemovies.logTimberWithTag
 import com.lukas.awesomemovies.repository.MoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.CompositeDisposable
 
 class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
 
     var moviesLiveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
     var errorLiveData: MutableLiveData<String> = MutableLiveData()
-    lateinit var disposable: Disposable
-    lateinit var bookmarkDisposable: Disposable
-    lateinit var bookmarkDeleteDisposable: Disposable
 
-    //TODO
+    private var bag = CompositeDisposable()
+
     fun onSwipeToRefresh() {
-       // getFavouriteMovies()
-        repository.getBookmarkedMovies()
-            .subscribe(
-            { logTimberWithTag(it) },
-            { logTimberWithTag(it.message.toString()) }
-        )
+        getFavouriteMovies()
     }
-
 
     fun getFavouriteMovies() {
         val observable: Observable<List<MovieEntity>> =
             repository.getTrendingMovies()
 
-        disposable = observable
+        val disposable = observable
             .subscribe(
                 { moviesLiveData.postValue(it) },
                 { errorLiveData.postValue(it.message) }
             )
+
+        bag.add(disposable)
+    }
+
+    fun updateBookmark(movie: MovieEntity) {
+        val disposable = repository.updateBookmark(movie)
+            .subscribe(
+                { logTimberWithTag("movie ${movie.title} inserted") },
+                { logTimberWithTag("${it.message}") }
+            )
+        bag.add(disposable)
     }
 
     override fun onCleared() {
         super.onCleared()
-        disposable.dispose()
-        bookmarkDisposable.dispose()
-        bookmarkDeleteDisposable.dispose()
+        bag.clear()
     }
-
-    fun onBookmarkIconClicked(movie: MovieEntity) {
-        if (movie.isBookmarked) {
-            deleteFromBookmark(movie)
-        } else {
-            saveBookmark(movie)
-        }
-    }
-
-    private fun saveBookmark(movie: MovieEntity) {
-
-    }
-
-    private fun deleteFromBookmark(movie: MovieEntity) {
-
-    }
-
 }
-
 

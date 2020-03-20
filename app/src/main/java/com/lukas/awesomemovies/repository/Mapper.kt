@@ -7,10 +7,12 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 
 object Mapper {
 
-    fun mapTrendingMovies(response: TrendingMoviesResponse): List<MovieEntity> {
+    fun mapTrendingMovies(response: TrendingMoviesResponse, bookmarkedIds: List<Int>): List<MovieEntity> {
         val movies = mutableListOf<MovieEntity>()
 
         response.results.forEach {
+
+            val isBookmarked = bookmarkedIds.contains(it.id)
 
             val movieEntity = MovieEntity(
                 id = it.id,
@@ -22,7 +24,7 @@ object Mapper {
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
                 posterPath = it.posterPath,
-                isBookmarked = false
+                isBookmarked = isBookmarked
             )
             movies.add(movieEntity)
         }
