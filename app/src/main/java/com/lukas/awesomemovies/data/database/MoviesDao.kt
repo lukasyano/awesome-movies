@@ -10,14 +10,17 @@ interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     @JvmSuppressWildcards
-    fun insertAll(movies:List<MovieEntity>) : Completable
+    fun insertAll(movies: List<MovieEntity>): Completable
 
     @Update
-    fun updateMovie(movie: MovieEntity) : Completable
+    fun updateMovie(movie: MovieEntity): Completable
 
     @Query("SELECT * FROM movies ORDER BY popularity DESC")
-    fun getAllMoviesByPopularity() : Observable<List<MovieEntity>>
+    fun getAllMoviesByPopularity(): Observable<List<MovieEntity>>
 
     @Query("SELECT id FROM movies WHERE isBookmarked = 1")
-    fun getBookmarkedMovieIds() : Observable<List<Int>>
+    fun getBookmarkedMovieIds(): Observable<List<Int>>
+
+    @Query("SELECT * FROM movies WHERE id = :movieId")
+    fun getMovieById(movieId: Int): Observable<MovieEntity>
 }

@@ -8,6 +8,7 @@ import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
@@ -40,7 +41,7 @@ class MoviesRepository(private val movieService: MoviesService, private val movi
             }
     }
 
-    fun getMovieDetails(movieId: Int): Observable<MovieDetailsEntity> {
+    fun getMovieDetails(movieId: Int): Single<MovieDetailsEntity> {
         val observable =
             movieService.getMovieDetails(movieId)
                 .subscribeOn(Schedulers.io())
@@ -49,6 +50,12 @@ class MoviesRepository(private val movieService: MoviesService, private val movi
         return observable.map {
             Mapper.mapMovieDetails(it)
         }
+    }
+
+    fun getMovieById(movieId: Int): Observable<MovieEntity> {
+        return moviesDao.getMovieById(movieId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun updateBookmark(movie: MovieEntity): Completable {

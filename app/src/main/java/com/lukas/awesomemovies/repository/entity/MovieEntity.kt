@@ -7,8 +7,6 @@ import androidx.room.PrimaryKey
 data class MovieEntity(
     @PrimaryKey val id: Int,
     val title: String,
-//    @Embedded(prefix = "genre_")
-//    val genreIds: List<Int>,
     val popularity: Double,
     val overview: String,
     val releaseDate: String,

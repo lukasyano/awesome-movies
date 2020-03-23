@@ -35,7 +35,7 @@ class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
     fun updateBookmark(movie: MovieEntity) {
         val disposable = repository.updateBookmark(movie)
             .subscribe(
-                { logTimberWithTag("movie ${movie.title} inserted") },
+                { logTimberWithTag("bookmark value ${movie.title} updated from fragment") },
                 { logTimberWithTag("${it.message}") }
             )
         bag.add(disposable)
