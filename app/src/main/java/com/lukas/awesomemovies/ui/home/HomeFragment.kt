@@ -16,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment() ,MovieListener{
 
     private val homeViewModel : HomeViewModel by viewModel()
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +30,8 @@ class HomeFragment : Fragment() ,MovieListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeAdapter = HomeAdapter(this)
-        recycleView.adapter = homeAdapter
+        moviesAdapter = MoviesAdapter(this)
+        recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
         observeMoviesLiveData()
         observeErrorLiveData()
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() ,MovieListener{
         homeViewModel.moviesLiveData.observe(
             viewLifecycleOwner,
             Observer {
-                homeAdapter.updateData(it)
+                moviesAdapter.updateData(it)
                 swipeToRefresh.isRefreshing = false
             }
         )
@@ -79,7 +79,7 @@ class HomeFragment : Fragment() ,MovieListener{
         }
     }
 
-    override fun onBookmarksClick(movieId: MovieEntity){
-        homeViewModel.updateBookmark(movieId)
+    override fun onBookmarksClick(movie: MovieEntity){
+        homeViewModel.updateBookmark(movie)
     }
 }

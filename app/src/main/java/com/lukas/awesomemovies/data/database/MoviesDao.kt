@@ -21,6 +21,9 @@ interface MoviesDao {
     @Query("SELECT id FROM movies WHERE isBookmarked = 1")
     fun getBookmarkedMovieIds(): Observable<List<Int>>
 
+    @Query("SELECT * FROM movies WHERE isBookmarked = 1")
+    fun getBookmarkedMovies() : Observable<List<MovieEntity>>
+
     @Query("SELECT * FROM movies WHERE id = :movieId")
     fun getMovieById(movieId: Int): Observable<MovieEntity>
 }
