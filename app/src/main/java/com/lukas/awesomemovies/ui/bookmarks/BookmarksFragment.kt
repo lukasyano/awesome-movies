@@ -34,7 +34,7 @@ class BookmarksFragment : Fragment(), MovieListener {
         bookmarksRecyclerView.adapter = bookmarksAdapter
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        bookmarksViewModel.loadData()
+        bookmarksViewModel.getBookmarkedMovies()
         observeLiveData()
     }
 
@@ -50,9 +50,7 @@ class BookmarksFragment : Fragment(), MovieListener {
         view?.let {
             findNavController()
                 .navigate(
-                    BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(
-                        movieId
-                    )
+                    BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(movieId)
                 )
         }
     }
