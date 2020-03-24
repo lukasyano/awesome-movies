@@ -10,7 +10,7 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class HomeAdapter(private val listener: MovieListener) : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
+class MoviesAdapter(private val listener: MovieListener) : RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder>() {
 
     private var data: List<MovieEntity> = emptyList()
 
