@@ -76,10 +76,4 @@ class MoviesRepository(private val movieService: MoviesService, private val movi
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
-    fun getBookmarkedMovies(): Observable<List<MovieEntity>> {
-        return moviesDao.getBookmarkedMovies()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
 }

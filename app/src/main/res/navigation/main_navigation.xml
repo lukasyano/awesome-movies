@@ -23,11 +23,7 @@
     <fragment
         android:id="@+id/navigation_bookmarks"
         android:name="com.lukas.awesomemovies.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_bookmarks" >
-        <action
-            android:id="@+id/action_navigation_bookmarks_to_navigation_movie_details"
-            app:destination="@id/navigation_movie_details" />
-    </fragment>
+        android:label="@string/title_bookmarks" />
 
     <activity
         android:id="@+id/navigation_movie_details"
