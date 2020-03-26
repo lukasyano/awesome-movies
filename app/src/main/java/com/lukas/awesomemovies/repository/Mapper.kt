@@ -1,23 +1,22 @@
 package com.lukas.awesomemovies.repository
 
+import com.lukas.awesomemovies.data.network.model.Movie
 import com.lukas.awesomemovies.data.network.model.MovieDetailsResponse
-import com.lukas.awesomemovies.data.network.model.TrendingMoviesResponse
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 
 object Mapper {
 
-    fun mapTrendingMovies(response: TrendingMoviesResponse, bookmarkedIds: List<Int>): List<MovieEntity> {
+    fun mapTrendingMovies(results: List<Movie>, bookmarkedIds: List<Int>): List<MovieEntity> {
         val movies = mutableListOf<MovieEntity>()
 
-        response.results.forEach {
+       results.forEach {
 
             val isBookmarked = bookmarkedIds.contains(it.id)
 
             val movieEntity = MovieEntity(
                 id = it.id,
                 title = it.title,
-                //genreIds = it.genreIds,
                 popularity = it.popularity,
                 overview = it.overview,
                 releaseDate = it.releaseDate,

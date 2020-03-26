@@ -10,6 +10,7 @@ import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
+import com.lukas.awesomemovies.ui.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() ,MovieListener{
             viewLifecycleOwner,
             Observer {
                 moviesAdapter.updateData(it)
+                spinner.hide()
                 swipeToRefresh.isRefreshing = false
             }
         )
@@ -59,6 +61,7 @@ class HomeFragment : Fragment() ,MovieListener{
             Observer { error ->
                 recycleView.snack(error)
                 swipeToRefresh.isRefreshing = false
+                spinner.hide()
             }
         )
     }

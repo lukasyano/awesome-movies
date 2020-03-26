@@ -18,11 +18,11 @@ class MoviesRepository(private val movieService: MoviesService, private val movi
     fun getTrendingMovies(): Observable<List<MovieEntity>> {
 
         return Observable.zip(
-                movieService.getTrendingMovies(),
+                movieService.getTrendingMovies(1),
                 moviesDao.getBookmarkedMovieIds(),
                 BiFunction<TrendingMoviesResponse, List<Int>, List<MovieEntity>>
                 { response: TrendingMoviesResponse, bookmarkedIds: List<Int> ->
-                    Mapper.mapTrendingMovies(response, bookmarkedIds)
+                    Mapper.mapTrendingMovies(response.results, bookmarkedIds)
                 }
             )
             .subscribeOn(Schedulers.io())

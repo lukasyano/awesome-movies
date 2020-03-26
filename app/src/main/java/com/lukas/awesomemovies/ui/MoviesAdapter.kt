@@ -1,4 +1,4 @@
-package com.lukas.awesomemovies.ui.home
+package com.lukas.awesomemovies.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class MoviesAdapter(private val listener: MovieListener) : RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder>() {

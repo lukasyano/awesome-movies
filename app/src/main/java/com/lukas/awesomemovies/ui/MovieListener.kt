@@ -4,5 +4,5 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 
 interface MovieListener {
     fun onMovieClick(movieId : Int)
-    fun onBookmarksClick(movieId: MovieEntity)
+    fun onBookmarksClick(movie: MovieEntity)
 }

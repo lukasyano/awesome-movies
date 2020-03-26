@@ -14,7 +14,6 @@ class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
     var errorLiveData: MutableLiveData<String> = MutableLiveData()
 
     private var bag = CompositeDisposable()
-
     fun onSwipeToRefresh() {
         getFavouriteMovies()
     }

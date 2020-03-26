@@ -12,11 +12,20 @@ class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel()
     var liveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
     var bag: CompositeDisposable = CompositeDisposable()
 
-    fun loadData() {
+    fun getBookmarkedMovies() {
         val disposable = repository.getBookmarkedMovies()
             .subscribe(
                 { liveData.postValue(it) },
                 { logTimberWithTag(it.message.toString()) }
+            )
+        bag.add(disposable)
+    }
+
+    fun updateBookmark(movie: MovieEntity) {
+        val disposable = repository.updateBookmark(movie)
+            .subscribe(
+                { logTimberWithTag("bookmark value ${movie.title} updated from fragment") },
+                { logTimberWithTag("${it.message}") }
             )
         bag.add(disposable)
     }
@@ -26,7 +35,4 @@ class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel()
         bag.clear()
     }
 
-    fun updateBookmark(movie: MovieEntity) {
-        repository.updateBookmark(movie)
-    }
 }
