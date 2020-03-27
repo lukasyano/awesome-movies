@@ -10,24 +10,24 @@ import io.reactivex.disposables.CompositeDisposable
 
 class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
 
-    var moviesLiveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
-    var errorLiveData: MutableLiveData<String> = MutableLiveData()
+     var liveData = MutableLiveData<HomeUiState>()
 
     private var bag = CompositeDisposable()
+
     fun onSwipeToRefresh() {
         getFavouriteMovies()
     }
 
     fun getFavouriteMovies() {
+
         val observable: Observable<List<MovieEntity>> =
             repository.getTrendingMovies()
 
         val disposable = observable
             .subscribe(
-                { moviesLiveData.postValue(it) },
-                { errorLiveData.postValue(it.message) }
+                { liveData.postValue(HomeUiState.Success(it)) },
+                { liveData.postValue(HomeUiState.Error(it.message.toString())) }
             )
-
         bag.add(disposable)
     }
 

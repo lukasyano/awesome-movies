@@ -14,9 +14,9 @@ import com.lukas.awesomemovies.ui.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() ,MovieListener{
+class HomeFragment : Fragment(), MovieListener {
 
-    private val homeViewModel : HomeViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(
@@ -34,9 +34,10 @@ class HomeFragment : Fragment() ,MovieListener{
         moviesAdapter = MoviesAdapter(this)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
-        observeMoviesLiveData()
-        observeErrorLiveData()
+
+        observeLiveData()
         setupPullToRefresh()
+
         homeViewModel.getFavouriteMovies()
     }
 
@@ -44,24 +45,21 @@ class HomeFragment : Fragment() ,MovieListener{
         inflater.inflate(R.menu.options_menu, menu)
     }
 
-    private fun observeMoviesLiveData() {
-        homeViewModel.moviesLiveData.observe(
-            viewLifecycleOwner,
-            Observer {
-                moviesAdapter.updateData(it)
-                spinner.hide()
-                swipeToRefresh.isRefreshing = false
-            }
-        )
-    }
-
-    private fun observeErrorLiveData() {
-        homeViewModel.errorLiveData.observe(
-            viewLifecycleOwner,
-            Observer { error ->
-                recycleView.snack(error)
-                swipeToRefresh.isRefreshing = false
-                spinner.hide()
+    private fun observeLiveData() {
+        homeViewModel.liveData.observe(
+            viewLifecycleOwner, Observer {
+                when (it) {
+                    is HomeUiState.Success -> {
+                        moviesAdapter.updateData(it.movies)
+                        swipeToRefresh.isRefreshing = false
+                        spinner.hide()
+                    }
+                    is HomeUiState.Error -> {
+                        recycleView.snack(it.error)
+                        swipeToRefresh.isRefreshing = false
+                        spinner.hide()
+                    }
+                }
             }
         )
     }
@@ -82,7 +80,7 @@ class HomeFragment : Fragment() ,MovieListener{
         }
     }
 
-    override fun onBookmarksClick(movie: MovieEntity){
+    override fun onBookmarksClick(movie: MovieEntity) {
         homeViewModel.updateBookmark(movie)
     }
 }
