@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
+import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
 import com.lukas.awesomemovies.ui.MoviesAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,19 +36,23 @@ class BookmarksFragment : Fragment(), MovieListener {
         bookmarksRecyclerView.adapter = bookmarksAdapter
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        bookmarksViewModel.getBookmarkedMovies()
         observeLiveData()
+        bookmarksViewModel.getBookmarkedMovies()
     }
 
     private fun observeLiveData() {
         bookmarksViewModel.liveData.observe(
             viewLifecycleOwner, Observer {
-                bookmarksAdapter.updateData(it)
-                if (it.isEmpty()) {
-                    no_bookmarks.visibility = View.VISIBLE
-                } else
-                    no_bookmarks.visibility = View.INVISIBLE
-
+                when (it) {
+                    is BookmarksUiState.Success -> {
+                        bookmarksAdapter.updateData(it.movies)
+                        if (it.movies.isEmpty()) no_bookmarks.visibility = View.VISIBLE
+                        else no_bookmarks.visibility = View.INVISIBLE
+                    }
+                    is BookmarksUiState.Error -> {
+                        no_bookmarks.snack(it.error)
+                    }
+                }
             }
         )
     }
@@ -55,7 +61,9 @@ class BookmarksFragment : Fragment(), MovieListener {
         view?.let {
             findNavController()
                 .navigate(
-                    BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(movieId)
+                    BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(
+                        movieId
+                    )
                 )
         }
     }

@@ -1,5 +1,6 @@
 package com.lukas.awesomemovies.ui.bookmarks
 
+import android.os.Handler
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lukas.awesomemovies.logTimberWithTag
@@ -9,14 +10,17 @@ import io.reactivex.disposables.CompositeDisposable
 
 class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel() {
 
-    var liveData: MutableLiveData<List<MovieEntity>> = MutableLiveData()
+    var liveData = MutableLiveData<BookmarksUiState>()
+
     var bag: CompositeDisposable = CompositeDisposable()
 
     fun getBookmarkedMovies() {
         val disposable = repository.getBookmarkedMovies()
             .subscribe(
-                { liveData.postValue(it) },
-                { logTimberWithTag(it.message.toString()) }
+                {
+                    liveData.postValue(BookmarksUiState.Success(it))
+                },
+                { liveData.postValue(BookmarksUiState.Error(it.message.toString())) }
             )
         bag.add(disposable)
     }
