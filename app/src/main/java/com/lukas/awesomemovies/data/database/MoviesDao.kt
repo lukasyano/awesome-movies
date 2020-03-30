@@ -26,4 +26,8 @@ interface MoviesDao {
 
     @Query("SELECT * FROM movies WHERE id = :movieId")
     fun getMovieById(movieId: Int): Observable<MovieEntity>
+
+    @Query("SELECT * FROM movies where title = :title")
+    fun getMovieByTitle(title: String) : Observable<List<MovieEntity>>
+
 }

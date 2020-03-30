@@ -1,25 +1,22 @@
-package com.lukas.awesomemovies.ui.bookmarks
+package com.lukas.awesomemovies.ui.discover
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lukas.awesomemovies.logTimberWithTag
-import com.lukas.awesomemovies.repository.MoviesRepository
+import com.lukas.awesomemovies.repository.SearchMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.disposables.CompositeDisposable
 
-class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel() {
+class DiscoverViewModel(private val repository: SearchMoviesRepository) : ViewModel() {
 
-    var liveData = MutableLiveData<BookmarksUiState>()
+    var liveData = MutableLiveData<DiscoverUiState>()
+    var bag = CompositeDisposable()
 
-    var bag: CompositeDisposable = CompositeDisposable()
-
-    fun getBookmarkedMovies() {
-        val disposable = repository.getBookmarkedMovies()
+    fun searchMoviesByTitle(title: String) {
+        val disposable = repository.getMoviesBySearch(title)
             .subscribe(
-                {
-                    liveData.postValue(BookmarksUiState.Success(it))
-                },
-                { liveData.postValue(BookmarksUiState.Error(it.message.toString())) }
+                { liveData.postValue(DiscoverUiState.Success(it)) },
+                { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
             )
         bag.add(disposable)
     }
@@ -37,5 +34,4 @@ class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel()
         super.onCleared()
         bag.clear()
     }
-
 }

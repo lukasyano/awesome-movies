@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/navigation_discover"
         android:name="com.lukas.awesomemovies.ui.discover.DiscoverFragment"
-        android:label="@string/title_discover" />
+        android:label="@string/title_discover" >
+        <action
+            android:id="@+id/action_navigation_discover_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_bookmarks"
