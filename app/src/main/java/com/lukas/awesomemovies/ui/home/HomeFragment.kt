@@ -31,7 +31,7 @@ class HomeFragment : Fragment(), MovieListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moviesAdapter = MoviesAdapter(this)
+        moviesAdapter = MoviesAdapter(this,true)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
 
@@ -75,7 +75,7 @@ class HomeFragment : Fragment(), MovieListener {
         view?.let {
             findNavController(it)
                 .navigate(
-                    HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movieId)
+                    HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movieId,true)
                 )
         }
     }

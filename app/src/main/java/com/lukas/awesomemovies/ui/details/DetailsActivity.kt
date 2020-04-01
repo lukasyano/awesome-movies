@@ -2,6 +2,7 @@ package com.lukas.awesomemovies.ui.details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
@@ -16,6 +17,9 @@ class DetailsActivity : AppCompatActivity() {
 
     private val movieId by lazy {
         navArgs<DetailsActivityArgs>().value.movieId
+    }
+    private val showBookmarksIcon by lazy {
+        navArgs<DetailsActivityArgs>().value.showBookmarksIcon
     }
 
     private val detailsViewModel: DetailsViewModel by viewModel()
@@ -63,8 +67,11 @@ class DetailsActivity : AppCompatActivity() {
             chip.text = it
             chipGroup.addView(chip)
         }
-        add_to_bookmarks.setOnClickListener {
-            detailsViewModel.onBookmarksButtonClick()
+        if (showBookmarksIcon) {
+            add_to_bookmarks.setOnClickListener {
+                detailsViewModel.onBookmarksButtonClick()
+            }
+            add_to_bookmarks.visibility = View.VISIBLE
         }
     }
 }

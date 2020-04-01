@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
+import com.lukas.awesomemovies.logTimberWithTag
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
@@ -34,7 +35,7 @@ class DiscoverFragment : Fragment(), MovieListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moviesAdapter = MoviesAdapter(this)
+        moviesAdapter = MoviesAdapter(this,false)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
 
@@ -51,6 +52,7 @@ class DiscoverFragment : Fragment(), MovieListener {
                         spinner.hide()
                     }
                     is DiscoverUiState.Error -> {
+                        logTimberWithTag(it.error)
                         recycleView.snack(it.error)
                         spinner.hide()
                     }
@@ -64,7 +66,7 @@ class DiscoverFragment : Fragment(), MovieListener {
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    discoverViewModel.searchMoviesByTitle(query)
+                    discoverViewModel.searchMovies(query)
                     spinner.show()
                 }
                 return false
@@ -83,13 +85,12 @@ class DiscoverFragment : Fragment(), MovieListener {
                 .navigate(
                     DiscoverFragmentDirections.actionNavigationDiscoverToNavigationMovieDetails(
                         movieId
-                    )
+                    ,false)
                 )
         }
     }
 
     override fun onBookmarksClick(movie: MovieEntity) {
-        discoverViewModel.updateBookmark(movie)
     }
 
     override fun onPause() {
@@ -99,5 +100,4 @@ class DiscoverFragment : Fragment(), MovieListener {
             activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view!!.windowToken, 0)
     }
-
 }

@@ -40,7 +40,9 @@
         <argument
             android:name="movieId"
             app:argType="integer" />
-
+        <argument
+            android:name="showBookmarksIcon"
+            app:argType="boolean" />
     </activity>
 
 </navigation>

@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class BookmarksFragment : Fragment(), MovieListener {
 
     private val bookmarksViewModel: BookmarksViewModel by viewModel()
-    private val bookmarksAdapter = MoviesAdapter(this)
+    private val bookmarksAdapter = MoviesAdapter(this,true)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +63,7 @@ class BookmarksFragment : Fragment(), MovieListener {
                 .navigate(
                     BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(
                         movieId
-                    )
+                    ,true)
                 )
         }
     }

@@ -1,35 +1,23 @@
 package com.lukas.awesomemovies.repository
 
-import com.lukas.awesomemovies.data.database.MoviesDao
+import com.lukas.awesomemovies.data.network.MoviesService
+import com.lukas.awesomemovies.data.network.model.MoviesResponse
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.http.Query
 
-class SearchMoviesRepository(private val moviesDao: MoviesDao) {
-    fun getMoviesBySearch(title : String) : Observable<List<MovieEntity>> {
-        return moviesDao.getMovieByTitle(title)
+class SearchMoviesRepository(private val moviesService: MoviesService) {
+
+    fun getMoviesFromSearch(query : String) : Single<List<MovieEntity>> {
+        val response = moviesService.getMoviesFromSearch(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-    }
 
-    fun updateBookmark(movie: MovieEntity): Completable {
-        val updatedMovie: MovieEntity = movie.run {
-            copy(
-                id = id,
-                title = title,
-                popularity = popularity,
-                overview = overview,
-                releaseDate = releaseDate,
-                voteAverage = voteAverage,
-                voteCount = voteCount,
-                posterPath = posterPath,
-                isBookmarked = !isBookmarked
-            )
+        return response.map {
+            Mapper.mapMovies(it.results, emptyList())
         }
-        return moviesDao.updateMovie(updatedMovie)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
+
 }

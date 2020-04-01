@@ -1,6 +1,6 @@
 package com.lukas.awesomemovies.data.network.model
 
-data class TrendingMoviesResponse(
+data class MoviesResponse(
     val page: Int,
     val results: List<Movie>,
     val total_pages: Int,

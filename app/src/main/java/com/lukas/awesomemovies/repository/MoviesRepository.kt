@@ -2,7 +2,7 @@ package com.lukas.awesomemovies.repository
 
 import com.lukas.awesomemovies.data.database.MoviesDao
 import com.lukas.awesomemovies.data.network.MoviesService
-import com.lukas.awesomemovies.data.network.model.TrendingMoviesResponse
+import com.lukas.awesomemovies.data.network.model.MoviesResponse
 import com.lukas.awesomemovies.logTimberWithTag
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
@@ -20,9 +20,9 @@ class MoviesRepository(private val movieService: MoviesService, private val movi
         return Observable.zip(
                 movieService.getTrendingMovies(1),
                 moviesDao.getBookmarkedMovieIds(),
-                BiFunction<TrendingMoviesResponse, List<Int>, List<MovieEntity>>
-                { response: TrendingMoviesResponse, bookmarkedIds: List<Int> ->
-                    Mapper.mapTrendingMovies(response.results, bookmarkedIds)
+                BiFunction<MoviesResponse, List<Int>, List<MovieEntity>>
+                { response: MoviesResponse, bookmarkedIds: List<Int> ->
+                    Mapper.mapMovies(response.results, bookmarkedIds)
                 }
             )
             .subscribeOn(Schedulers.io())

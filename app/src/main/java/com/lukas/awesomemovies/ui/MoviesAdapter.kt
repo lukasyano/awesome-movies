@@ -9,7 +9,8 @@ import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class MoviesAdapter(private val listener: MovieListener) : RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder>() {
+class MoviesAdapter(private val listener: MovieListener, private val showBookmarkIcon: Boolean) :
+    RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder>() {
 
     private var data: List<MovieEntity> = emptyList()
 
@@ -27,12 +28,18 @@ class MoviesAdapter(private val listener: MovieListener) : RecyclerView.Adapter<
         val movieEntity = data[position]
 
         holder.rootView.setOnClickListener {
-           listener.onMovieClick(movieEntity.id)
+            listener.onMovieClick(movieEntity.id)
         }
-        holder.bookmarksImageView.setOnClickListener {
-            listener.onBookmarksClick(movieEntity)
+
+        if (showBookmarkIcon) {
+            holder.bookmarksImageView.isSelected = movieEntity.isBookmarked
+            holder.bookmarksImageView.visibility = View.VISIBLE
+
+            holder.bookmarksImageView.setOnClickListener {
+                listener.onBookmarksClick(movieEntity)
+            }
         }
-        holder.bookmarksImageView.isSelected = movieEntity.isBookmarked
+
         holder.titleView.text = movieEntity.title
         holder.descriptionView.text = movieEntity.overview
         holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)

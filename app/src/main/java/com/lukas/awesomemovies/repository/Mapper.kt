@@ -7,7 +7,7 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 
 object Mapper {
 
-    fun mapTrendingMovies(results: List<Movie>, bookmarkedIds: List<Int>): List<MovieEntity> {
+    fun mapMovies(results: List<Movie>, bookmarkedIds: List<Int>): List<MovieEntity> {
         val movies = mutableListOf<MovieEntity>()
 
        results.forEach {
@@ -22,10 +22,12 @@ object Mapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 voteCount = it.voteCount,
-                posterPath = it.posterPath,
+                posterPath = it.posterPath ?: "",
                 isBookmarked = isBookmarked
             )
-            movies.add(movieEntity)
+           if (movieEntity.posterPath.isNotEmpty()){
+               movies.add(movieEntity)
+           }
         }
         return movies
     }
