@@ -43,6 +43,7 @@ class MoviesAdapter(private val listener: MovieListener, private val showBookmar
         holder.titleView.text = movieEntity.title
         holder.descriptionView.text = movieEntity.overview
         holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)
+        holder.ratingStarView.text = movieEntity.voteAverage.toString()
     }
 
     fun updateData(data: List<MovieEntity>) {
@@ -56,5 +57,6 @@ class MoviesAdapter(private val listener: MovieListener, private val showBookmar
         var titleView = view.titleV
         var descriptionView = view.descriptionV
         var bookmarksImageView = view.bookmarksImageV
+        var ratingStarView = view.rating
     }
 }

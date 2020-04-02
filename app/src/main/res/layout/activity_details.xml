@@ -30,19 +30,6 @@
             app:layout_constraintStart_toEndOf="@+id/language"
             app:layout_constraintTop_toBottomOf="@+id/mainImageV" />
 
-        <Button
-            android:id="@+id/add_to_bookmarks"
-            android:layout_width="365dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="@dimen/medium_space"
-            android:layout_marginTop="@dimen/medium_space"
-            android:layout_marginEnd="@dimen/medium_space"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/describe" />
-
         <TextView
             android:id="@+id/describe"
             android:layout_width="match_parent"
@@ -85,6 +72,36 @@
 
 
         </com.google.android.material.chip.ChipGroup>
+
+        <ImageButton
+            android:id="@+id/bookmarksImageV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:layout_marginBottom="@dimen/medium_space"
+            android:background="@drawable/ic_bookmarks_selector"
+            app:layout_constraintBottom_toTopOf="@+id/chipGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageV"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:layout_marginBottom="@dimen/medium_space"
+            android:drawableStart="@drawable/ic_star_border_black_24dp"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/chipGroup"
+            app:layout_constraintEnd_toStartOf="@+id/bookmarksImageV"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageV"
+            tools:text="Rating" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

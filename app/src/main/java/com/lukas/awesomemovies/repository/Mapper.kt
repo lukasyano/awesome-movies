@@ -49,7 +49,8 @@ object Mapper {
             runtime = response.runtime,
             originalLanguage = originalLanguage,
             posterPath = response.poster_path,
-            releaseDate = response.release_date
+            releaseDate = response.release_date,
+            movieAverage = response.vote_average
         )
     }
 

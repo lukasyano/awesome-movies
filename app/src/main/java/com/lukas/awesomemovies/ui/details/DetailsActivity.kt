@@ -36,11 +36,7 @@ class DetailsActivity : AppCompatActivity() {
     private fun observeMovieEntityData() {
         detailsViewModel.movieEntityLiveData.observe(
             this, Observer {
-                if (it.isBookmarked) {
-                    add_to_bookmarks.text = getString(R.string.remove_from_bookmarks)
-                } else {
-                    add_to_bookmarks.text = getString(R.string.add_too_bookmarks)
-                }
+                bookmarksImageV.isSelected = it.isBookmarked
             }
         )
     }
@@ -61,6 +57,7 @@ class DetailsActivity : AppCompatActivity() {
         duration.text = "${(entity.runtime / 60)}h ${(entity.runtime % 60)}min"
         describe.text = entity.overview
         supportActionBar?.title = entity.title
+        rating.text = entity.movieAverage.toString()
 
         entity.genres.forEach {
             val chip = Chip(this)
@@ -68,10 +65,10 @@ class DetailsActivity : AppCompatActivity() {
             chipGroup.addView(chip)
         }
         if (showBookmarksIcon) {
-            add_to_bookmarks.setOnClickListener {
+            bookmarksImageV.setOnClickListener {
                 detailsViewModel.onBookmarksButtonClick()
             }
-            add_to_bookmarks.visibility = View.VISIBLE
+            bookmarksImageV.visibility = View.VISIBLE
         }
     }
 }

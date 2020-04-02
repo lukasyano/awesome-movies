@@ -8,6 +8,7 @@ data class MovieDetailsEntity(
     val runtime: Int,
     val originalLanguage: String,
     val posterPath: String,
-    val releaseDate: String
-    )
+    val releaseDate: String,
+    val movieAverage: Double
+)
 
