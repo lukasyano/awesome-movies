@@ -63,7 +63,6 @@ class HomeFragment : Fragment(), MovieListener {
         )
     }
 
-
     private fun observeBookmarksLiveData() {
         homeViewModel.bookmarksLiveData.observe(
             viewLifecycleOwner, Observer {

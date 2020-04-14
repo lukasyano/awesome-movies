@@ -20,6 +20,8 @@ object Mapper {
                 voteCount = it.voteCount ?: 0,
                 posterPath = it.posterPath ?: ""
             )
+        }.filter {
+            it.posterPath.isNotEmpty().and(!it.voteAverage.equals(0.0))
         }
     }
 
