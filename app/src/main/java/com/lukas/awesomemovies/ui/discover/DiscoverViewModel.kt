@@ -18,7 +18,7 @@ class DiscoverViewModel(
 
     fun searchMovies(query: String) {
         val disposable = searchMoviesRepository.getMoviesFromSearch(query).doOnSuccess {
-            observeBookmarksLiveData()
+            getBookmarkedMoviesIds()
         }
             .subscribe(
                 { liveData.postValue(DiscoverUiState.Success(it)) },
@@ -27,7 +27,7 @@ class DiscoverViewModel(
         bag.add(disposable)
     }
 
-    private fun observeBookmarksLiveData() {
+    private fun getBookmarkedMoviesIds() {
         val disposable = bookmarksRepository.getBookmarkedMoviesIds()
             .subscribe(
                 { bookmarksLiveData.postValue(it) },
