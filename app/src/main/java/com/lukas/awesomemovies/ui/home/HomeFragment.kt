@@ -31,14 +31,13 @@ class HomeFragment : Fragment(), MovieListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moviesAdapter = MoviesAdapter(this,true)
+        moviesAdapter = MoviesAdapter(this)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
 
         observeLiveData()
+        observeBookmarksLiveData()
         setupPullToRefresh()
-
-        homeViewModel.getFavouriteMovies()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -64,23 +63,38 @@ class HomeFragment : Fragment(), MovieListener {
         )
     }
 
+
+    private fun observeBookmarksLiveData() {
+        homeViewModel.bookmarksLiveData.observe(
+            viewLifecycleOwner, Observer {
+                moviesAdapter.updateData(data = null, bookmarksIds = it)
+            }
+        )
+    }
+
+
     private fun setupPullToRefresh() {
         swipeToRefresh.setOnRefreshListener {
             homeViewModel.onSwipeToRefresh()
         }
     }
 
-    override fun onMovieClick(movieId: Int) {
+    override fun onMovieClick(movie: MovieEntity) {
 
         view?.let {
             findNavController(it)
                 .navigate(
-                    HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movieId,true)
+                    HomeFragmentDirections.actionNavigationHomeToNavigationMovieDetails(movie)
                 )
         }
     }
 
-    override fun onBookmarksClick(movie: MovieEntity) {
-        homeViewModel.updateBookmark(movie)
+    override fun onUnselectedBookmarkBtnClick(movie : MovieEntity) {
+        homeViewModel.onUnselectedBookmarkBtnClick(movie)
     }
+
+    override fun onSelectedBookmarkBtnClick(movieId: Int) {
+        homeViewModel.onSelectedBookmarkBtnClick(movieId)
+    }
+
 }

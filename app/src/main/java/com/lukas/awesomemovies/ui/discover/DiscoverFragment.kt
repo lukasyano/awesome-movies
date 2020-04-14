@@ -35,11 +35,12 @@ class DiscoverFragment : Fragment(), MovieListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moviesAdapter = MoviesAdapter(this,false)
+        moviesAdapter = MoviesAdapter(this)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
 
         observeLiveData()
+        observeBookmarksLiveData()
         setSearchView()
     }
 
@@ -57,6 +58,14 @@ class DiscoverFragment : Fragment(), MovieListener {
                         spinner.hide()
                     }
                 }
+            }
+        )
+    }
+
+    private fun observeBookmarksLiveData() {
+        discoverViewModel.bookmarksLiveData.observe(
+            viewLifecycleOwner, Observer {
+                moviesAdapter.updateData(data = null, bookmarksIds = it)
             }
         )
     }
@@ -79,18 +88,23 @@ class DiscoverFragment : Fragment(), MovieListener {
     }
 
 
-    override fun onMovieClick(movieId: Int) {
+    override fun onMovieClick(movie: MovieEntity) {
         view?.let {
             findNavController(it)
                 .navigate(
                     DiscoverFragmentDirections.actionNavigationDiscoverToNavigationMovieDetails(
-                        movieId
-                    ,false)
+                        movie
+                    )
                 )
         }
     }
 
-    override fun onBookmarksClick(movie: MovieEntity) {
+    override fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
+        discoverViewModel.onUnSelectedBtnClick(movie)
+    }
+
+    override fun onSelectedBookmarkBtnClick(movieId: Int) {
+        discoverViewModel.onSelectedBtnClick(movieId)
     }
 
     override fun onPause() {

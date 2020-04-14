@@ -7,16 +7,16 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class SearchMoviesRepository(private val moviesService: MoviesService) {
+class TrendingMoviesRepository(private val movieService: MoviesService) {
 
-    fun getMoviesFromSearch(query : String) : Single<List<MovieEntity>> {
-        val response = moviesService.getMoviesFromSearch(query)
+    fun getTrendingMovies(pageNr : Int = 1): Single<List<MovieEntity>> {
+
+        return movieService.getTrendingMovies(pageNr)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-
-        return response.map {
-            Mapper.mapMovies(it.results)
-        }
+            .map {
+                Mapper.mapMovies(it.results)
+            }
     }
 
 }

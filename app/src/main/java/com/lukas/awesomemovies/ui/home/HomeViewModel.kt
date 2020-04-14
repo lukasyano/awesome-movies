@@ -2,26 +2,37 @@ package com.lukas.awesomemovies.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lukas.awesomemovies.logTimberWithTag
-import com.lukas.awesomemovies.repository.MoviesRepository
+import com.lukas.awesomemovies.repository.BookmarksRepository
+import com.lukas.awesomemovies.repository.TrendingMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 
-class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
+class HomeViewModel(
+    private val trendingMoviesRepository: TrendingMoviesRepository,
+    private val bookmarksRepository: BookmarksRepository
+) : ViewModel() {
 
-     var liveData = MutableLiveData<HomeUiState>()
+    val liveData = MutableLiveData<HomeUiState>()
+    val bookmarksLiveData = MutableLiveData<List<Int>>()
 
     private var bag = CompositeDisposable()
 
-    fun onSwipeToRefresh() {
-        getFavouriteMovies()
+    init {
+        getTrendingMovies()
     }
 
-    fun getFavouriteMovies() {
+    fun onSwipeToRefresh() {
+        getTrendingMovies()
+    }
 
-        val observable: Observable<List<MovieEntity>> =
-            repository.getTrendingMovies()
+    private fun getTrendingMovies() {
+
+        val observable: Single<List<MovieEntity>> =
+            trendingMoviesRepository.getTrendingMovies()
+                .doOnSuccess {
+                    getBookmarkedMoviesIds()
+                }
 
         val disposable = observable
             .subscribe(
@@ -31,12 +42,27 @@ class HomeViewModel(private val repository: MoviesRepository) : ViewModel() {
         bag.add(disposable)
     }
 
-    fun updateBookmark(movie: MovieEntity) {
-        val disposable = repository.updateBookmark(movie)
+    private fun getBookmarkedMoviesIds() {
+        val disposable = bookmarksRepository.getBookmarkedMoviesIds()
             .subscribe(
-                { logTimberWithTag("bookmark value ${movie.title} updated from fragment") },
-                { logTimberWithTag("${it.message}") }
+                { bookmarksLiveData.postValue(it) },
+                { liveData.postValue(HomeUiState.Error(it.message.toString())) }
             )
+        bag.add(disposable)
+    }
+
+
+    fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
+        val disposable = bookmarksRepository.insertBookmarkingMovie(movie)
+            .subscribe()
+
+        bag.add(disposable)
+    }
+
+    fun onSelectedBookmarkBtnClick(movieId : Int) {
+        val disposable = bookmarksRepository.deleteBookmarkingMovie(movieId)
+            .subscribe()
+
         bag.add(disposable)
     }
 

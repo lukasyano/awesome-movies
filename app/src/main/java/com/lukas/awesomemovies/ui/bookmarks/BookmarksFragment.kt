@@ -12,15 +12,13 @@ import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
-import com.lukas.awesomemovies.ui.MoviesAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookmarksFragment : Fragment(), MovieListener {
 
     private val bookmarksViewModel: BookmarksViewModel by viewModel()
-    private val bookmarksAdapter = MoviesAdapter(this,true)
+    private val bookmarksAdapter = BookmarksAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +35,7 @@ class BookmarksFragment : Fragment(), MovieListener {
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
 
         observeLiveData()
-        bookmarksViewModel.getBookmarkedMovies()
+        observeBookmarksLiveData()
     }
 
     private fun observeLiveData() {
@@ -57,18 +55,32 @@ class BookmarksFragment : Fragment(), MovieListener {
         )
     }
 
-    override fun onMovieClick(movieId: Int) {
+    private fun observeBookmarksLiveData() {
+        bookmarksViewModel.bookmarksLiveData.observe(
+            viewLifecycleOwner, Observer {
+                bookmarksAdapter.updateData(data = null, bookmarksIds = it)
+            }
+        )
+    }
+
+    override fun onMovieClick(movie: MovieEntity) {
         view?.let {
             findNavController()
                 .navigate(
                     BookmarksFragmentDirections.actionNavigationBookmarksToNavigationMovieDetails(
-                        movieId
-                    ,true)
+                        movie
+                    )
                 )
+
         }
     }
 
-    override fun onBookmarksClick(movie: MovieEntity) {
-        bookmarksViewModel.updateBookmark(movie)
+    override fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
+        bookmarksViewModel.onUnselectedBookmarkBtnClick(movie)
     }
+
+    override fun onSelectedBookmarkBtnClick(movieId: Int) {
+        bookmarksViewModel.onSelectedBookmarkBtnClick(movieId)
+    }
+
 }

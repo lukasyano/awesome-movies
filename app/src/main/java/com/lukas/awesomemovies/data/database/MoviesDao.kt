@@ -9,25 +9,18 @@ import io.reactivex.Observable
 interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    @JvmSuppressWildcards
-    fun insertAll(movies: List<MovieEntity>): Completable
+    fun insertBookmarkingMovie(movie: MovieEntity): Completable
 
-    @Update
-    fun updateMovie(movie: MovieEntity): Completable
+    @Query("DELETE FROM bookmarkedMovies WHERE id = :movieId")
+    fun deleteBookmarkingMovie(movieId: Int): Completable
 
-    @Query("SELECT * FROM movies ORDER BY popularity DESC")
-    fun getAllMoviesByPopularity(): Observable<List<MovieEntity>>
+    @Query("SELECT id FROM bookmarkedMovies")
+    fun getBookmarkedMoviesIds(): Observable<List<Int>>
 
-    @Query("SELECT id FROM movies WHERE isBookmarked = 1")
-    fun getBookmarkedMovieIds(): Observable<List<Int>>
+    @Query("SELECT * FROM bookmarkedMovies")
+    fun getBookmarkedMovies(): Observable<List<MovieEntity>>
 
-    @Query("SELECT * FROM movies WHERE isBookmarked = 1")
-    fun getBookmarkedMovies() : Observable<List<MovieEntity>>
-
-    @Query("SELECT * FROM movies WHERE id = :movieId")
-    fun getMovieById(movieId: Int): Observable<MovieEntity>
-
-    @Query("SELECT * FROM movies where title = :title")
-    fun getMovieByTitle(title: String) : Observable<List<MovieEntity>>
+    @Query("SELECT * FROM bookmarkedMovies WHERE id = :movieId ")
+    fun getBookmarkedMovieById(movieId: Int): Observable<MovieEntity>
 
 }

@@ -2,19 +2,25 @@ package com.lukas.awesomemovies.ui.bookmarks
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lukas.awesomemovies.logTimberWithTag
-import com.lukas.awesomemovies.repository.MoviesRepository
+import com.lukas.awesomemovies.repository.BookmarksRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.disposables.CompositeDisposable
 
-class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel() {
+class BookmarksViewModel(private val repository: BookmarksRepository) : ViewModel() {
 
     var liveData = MutableLiveData<BookmarksUiState>()
+    var bookmarksLiveData = MutableLiveData<List<Int>>()
 
     var bag: CompositeDisposable = CompositeDisposable()
 
-    fun getBookmarkedMovies() {
-        val disposable = repository.getBookmarkedMovies()
+    init {
+        getBookmarkedMovies()
+    }
+
+    private fun getBookmarkedMovies() {
+        val disposable = repository.getBookmarkedMovies().doOnEach{
+            getBookmarkedMoviesIds()
+        }
             .subscribe(
                 {
                     liveData.postValue(BookmarksUiState.Success(it))
@@ -24,12 +30,27 @@ class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel()
         bag.add(disposable)
     }
 
-    fun updateBookmark(movie: MovieEntity) {
-        val disposable = repository.updateBookmark(movie)
+    private fun getBookmarkedMoviesIds() {
+        val disposable = repository.getBookmarkedMoviesIds()
             .subscribe(
-                { logTimberWithTag("bookmark value ${movie.title} updated from fragment") },
-                { logTimberWithTag("${it.message}") }
+                { bookmarksLiveData.postValue(it) },
+                { liveData.postValue(BookmarksUiState.Error(it.message.toString())) }
             )
+        bag.add(disposable)
+    }
+
+
+    fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
+        val disposable = repository.insertBookmarkingMovie(movie)
+            .subscribe()
+
+        bag.add(disposable)
+    }
+
+    fun onSelectedBookmarkBtnClick(movieId: Int) {
+        val disposable = repository.deleteBookmarkingMovie(movieId)
+            .subscribe()
+
         bag.add(disposable)
     }
 
@@ -37,5 +58,4 @@ class BookmarksViewModel(private val repository: MoviesRepository) : ViewModel()
         super.onCleared()
         bag.clear()
     }
-
 }

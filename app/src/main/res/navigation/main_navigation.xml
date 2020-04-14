@@ -38,11 +38,9 @@
         android:name="com.lukas.awesomemovies.ui.details.DetailsActivity"
         android:label="title_movie_details" >
         <argument
-            android:name="movieId"
-            app:argType="integer" />
-        <argument
-            android:name="showBookmarksIcon"
-            app:argType="boolean" />
+            android:name="movieEntity"
+            app:argType="com.lukas.awesomemovies.repository.entity.MovieEntity" />
+
     </activity>
 
 </navigation>
