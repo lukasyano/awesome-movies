@@ -15,7 +15,7 @@ import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BookmarksFragment : Fragment(), MovieListener {
+class BookmarksFragment : Fragment(), BookmarksListener {
 
     private val bookmarksViewModel: BookmarksViewModel by viewModel()
     private val bookmarksAdapter = BookmarksAdapter(this)
@@ -35,7 +35,6 @@ class BookmarksFragment : Fragment(), MovieListener {
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
 
         observeLiveData()
-        observeBookmarksLiveData()
     }
 
     private fun observeLiveData() {
@@ -55,14 +54,6 @@ class BookmarksFragment : Fragment(), MovieListener {
         )
     }
 
-    private fun observeBookmarksLiveData() {
-        bookmarksViewModel.bookmarksLiveData.observe(
-            viewLifecycleOwner, Observer {
-                bookmarksAdapter.updateData(data = null, bookmarksIds = it)
-            }
-        )
-    }
-
     override fun onMovieClick(movie: MovieEntity) {
         view?.let {
             findNavController()
@@ -71,16 +62,12 @@ class BookmarksFragment : Fragment(), MovieListener {
                         movie
                     )
                 )
-
         }
     }
 
-    override fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
-        bookmarksViewModel.onUnselectedBookmarkBtnClick(movie)
+    override fun onBookmarkBtnClick(movieId: Int) {
+        bookmarksViewModel.onBookmarksBtnClick(movieId)
     }
 
-    override fun onSelectedBookmarkBtnClick(movieId: Int) {
-        bookmarksViewModel.onSelectedBookmarkBtnClick(movieId)
-    }
 
 }

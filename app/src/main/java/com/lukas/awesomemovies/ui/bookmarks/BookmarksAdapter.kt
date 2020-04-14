@@ -10,11 +10,10 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class BookmarksAdapter(private val listener: MovieListener) :
+class BookmarksAdapter(private val listener: BookmarksListener) :
     RecyclerView.Adapter<BookmarksAdapter.MovieItemViewHolder>() {
 
     private var data = emptyList<MovieEntity>()
-    private var bookmarkedMoviesIds = emptyList<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -28,20 +27,15 @@ class BookmarksAdapter(private val listener: MovieListener) :
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
         val movie = data[position]
-        val isBookmarked = bookmarkedMoviesIds.contains(movie.id)
 
         holder.rootView.setOnClickListener {
             listener.onMovieClick(movie)
         }
 
-        holder.bookmarksImageView.isSelected = isBookmarked
+        holder.bookmarksImageView.isSelected = true
 
         holder.bookmarksImageView.setOnClickListener {
-            if (isBookmarked) {
-                listener.onSelectedBookmarkBtnClick(movie.id)
-            } else {
-                listener.onUnselectedBookmarkBtnClick(movie)
-            }
+            listener.onBookmarkBtnClick(movie.id)
         }
 
         holder.titleView.text = movie.title
@@ -50,13 +44,9 @@ class BookmarksAdapter(private val listener: MovieListener) :
         holder.ratingStarView.text = movie.voteAverage.toString()
     }
 
-    fun updateData(data: List<MovieEntity>? = null, bookmarksIds: List<Int>? = null) {
-        data?.let {
-            this.data = data
-        }
-        bookmarksIds?.let {
-            this.bookmarkedMoviesIds = bookmarksIds
-        }
+    fun updateData(data: List<MovieEntity>) {
+        this.data = data
+
         notifyDataSetChanged()
     }
 
