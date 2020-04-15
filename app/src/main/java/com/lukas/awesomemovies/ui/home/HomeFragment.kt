@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
+import com.lukas.awesomemovies.repository.FilterType
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
@@ -42,6 +43,15 @@ class HomeFragment : Fragment(), MovieListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.filter_by_popularity -> homeViewModel.onFilterTypeClicked(FilterType.POPULARITY)
+            R.id.filter_by_date -> homeViewModel.onFilterTypeClicked(FilterType.DATE)
+            R.id.filter_by_votes -> homeViewModel.onFilterTypeClicked(FilterType.VOTES)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun observeLiveData() {

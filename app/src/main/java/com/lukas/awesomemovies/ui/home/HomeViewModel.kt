@@ -3,6 +3,7 @@ package com.lukas.awesomemovies.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lukas.awesomemovies.repository.BookmarksRepository
+import com.lukas.awesomemovies.repository.FilterType
 import com.lukas.awesomemovies.repository.TrendingMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Single
@@ -26,10 +27,10 @@ class HomeViewModel(
         getTrendingMovies()
     }
 
-    private fun getTrendingMovies() {
+    private fun getTrendingMovies(pageNr: Int = 1, filterType: FilterType = FilterType.UNFILTERED) {
 
         val observable: Single<List<MovieEntity>> =
-            trendingMoviesRepository.getTrendingMovies()
+            trendingMoviesRepository.getTrendingMovies(pageNr, filterType)
                 .doOnSuccess {
                     getBookmarkedMoviesIds()
                 }
@@ -59,7 +60,7 @@ class HomeViewModel(
         bag.add(disposable)
     }
 
-    fun onSelectedBookmarkBtnClick(movieId : Int) {
+    fun onSelectedBookmarkBtnClick(movieId: Int) {
         val disposable = bookmarksRepository.deleteBookmarkingMovie(movieId)
             .subscribe()
 
@@ -69,6 +70,15 @@ class HomeViewModel(
     override fun onCleared() {
         super.onCleared()
         bag.clear()
+    }
+
+    fun onFilterTypeClicked(filterType: FilterType) {
+        when (filterType) {
+            FilterType.UNFILTERED -> getTrendingMovies(filterType = FilterType.UNFILTERED)
+            FilterType.POPULARITY -> getTrendingMovies(filterType = FilterType.POPULARITY)
+            FilterType.VOTES -> getTrendingMovies(filterType = FilterType.VOTES)
+            FilterType.DATE -> getTrendingMovies(filterType = FilterType.DATE)
+        }
     }
 }
 

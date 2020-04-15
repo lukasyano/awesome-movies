@@ -9,14 +9,29 @@ import io.reactivex.schedulers.Schedulers
 
 class TrendingMoviesRepository(private val movieService: MoviesService) {
 
-    fun getTrendingMovies(pageNr : Int = 1): Single<List<MovieEntity>> {
+    fun getTrendingMovies(
+        pageNr: Int,
+        filterType: FilterType
+    ): Single<List<MovieEntity>> {
 
         return movieService.getTrendingMovies(pageNr)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map {
-                Mapper.mapMovies(it.results)
+                when (filterType) {
+                     FilterType.UNFILTERED-> {
+                        Mapper.mapMovies(it.results)
+                    }
+                    FilterType.POPULARITY -> {
+                        Mapper.mapMovies(it.results.sortedByDescending { it.popularity })
+                    }
+                    FilterType.VOTES -> {
+                        Mapper.mapMovies(it.results.sortedByDescending { it.voteAverage })
+                    }
+                    FilterType.DATE -> {
+                        Mapper.mapMovies(it.results.sortedByDescending { it.releaseDate })
+                    }
+                }
             }
     }
-
 }
