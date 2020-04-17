@@ -59,6 +59,7 @@ class HomeFragment : Fragment(), MovieListener {
             viewLifecycleOwner, Observer {
                 when (it) {
                     is HomeUiState.Success -> {
+                        recycleView.scrollToPosition(0)
                         moviesAdapter.updateData(it.movies)
                         swipeToRefresh.isRefreshing = false
                         spinner.hide()
