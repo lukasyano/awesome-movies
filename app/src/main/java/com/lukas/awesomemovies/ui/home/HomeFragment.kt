@@ -69,6 +69,9 @@ class HomeFragment : Fragment(), MovieListener {
                         swipeToRefresh.isRefreshing = false
                         spinner.hide()
                     }
+                    is HomeUiState.DisplayFilterLabel -> {
+                        filterType.text = it.type
+                    }
                 }
             }
         )

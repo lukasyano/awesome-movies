@@ -29,10 +29,12 @@ class HomeViewModel(
         getTrendingMovies()
     }
 
-    private fun getTrendingMovies(pageNr: Int = 1, filterType: FilterType = FilterType.UNFILTERED) {
+    private fun getTrendingMovies(pageNr: Int = 1) {
+
+        liveData.postValue(HomeUiState.DisplayFilterLabel("Blagadariu"))
 
         val observable: Single<List<MovieEntity>> =
-            trendingMoviesRepository.getTrendingMovies(pageNr, filterType)
+            trendingMoviesRepository.getTrendingMovies(pageNr, filterType = FilterType.UNFILTERED) //todo <-
                 .doOnSuccess {
                     getBookmarkedMoviesIds()
                 }
@@ -75,12 +77,13 @@ class HomeViewModel(
     }
 
     fun onFilterTypeClicked(filterType: FilterType) {
-        when (filterType) {
-            FilterType.UNFILTERED -> getTrendingMovies(filterType = FilterType.UNFILTERED)
-            FilterType.POPULARITY -> getTrendingMovies(filterType = FilterType.POPULARITY)
-            FilterType.VOTES -> getTrendingMovies(filterType = FilterType.VOTES)
-            FilterType.DATE -> getTrendingMovies(filterType = FilterType.DATE)
-        }
+//        when (filterType) {
+//            FilterType.UNFILTERED -> getTrendingMovies(filterType = FilterType.UNFILTERED)
+//            FilterType.POPULARITY -> getTrendingMovies(filterType = FilterType.POPULARITY)
+//            FilterType.VOTES -> getTrendingMovies(filterType = FilterType.VOTES)
+//            FilterType.DATE -> getTrendingMovies(filterType = FilterType.DATE)
+//        }
     }
+
 }
 
