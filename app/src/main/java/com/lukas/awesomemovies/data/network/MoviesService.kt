@@ -1,6 +1,7 @@
 package com.lukas.awesomemovies.data.network
 
 import com.lukas.awesomemovies.data.network.model.MovieDetailsResponse
+import com.lukas.awesomemovies.data.network.model.MovieGenresResponse
 import com.lukas.awesomemovies.data.network.model.MoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -16,5 +17,8 @@ interface MoviesService {
 
     @GET("search/movie")
     fun getMoviesFromSearch(@Query("query") query: String) : Single<MoviesResponse>
+
+    @GET("genre/movie/list")
+    fun getMoviesGenres() : Single<MovieGenresResponse>
 
 }

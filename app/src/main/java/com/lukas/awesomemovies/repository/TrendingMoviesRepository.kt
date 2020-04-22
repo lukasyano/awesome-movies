@@ -1,5 +1,6 @@
 package com.lukas.awesomemovies.repository
 
+import com.lukas.awesomemovies.FilterType
 import com.lukas.awesomemovies.data.network.MoviesService
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.repository.mapper.Mapper

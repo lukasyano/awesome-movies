@@ -1,4 +1,4 @@
-package com.lukas.awesomemovies.repository
+package com.lukas.awesomemovies
 
 enum class FilterType {
     UNFILTERED,
