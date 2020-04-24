@@ -1,6 +1,7 @@
 package com.lukas.awesomemovies.data.network
 
 import com.lukas.awesomemovies.data.network.model.MovieDetailsResponse
+import com.lukas.awesomemovies.data.network.model.MovieDiscoveryResponse
 import com.lukas.awesomemovies.data.network.model.MovieGenresResponse
 import com.lukas.awesomemovies.data.network.model.MoviesResponse
 import io.reactivex.Single
@@ -21,4 +22,6 @@ interface MoviesService {
     @GET("genre/movie/list")
     fun getMoviesGenres() : Single<MovieGenresResponse>
 
+    @GET("discover/movie")
+    fun getDiscoveryMoviesByGenres() : Single<MovieDiscoveryResponse>
 }

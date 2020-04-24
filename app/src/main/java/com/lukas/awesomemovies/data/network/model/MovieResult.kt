@@ -2,7 +2,7 @@ package com.lukas.awesomemovies.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Movie(
+data class MovieResult(
     val adult: Boolean?,
     @SerializedName("backdrop_path")
     val backdropPath: String?,

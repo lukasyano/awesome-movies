@@ -1,13 +1,13 @@
 package com.lukas.awesomemovies.repository.mapper
 
-import com.lukas.awesomemovies.data.network.model.Movie
+import com.lukas.awesomemovies.data.network.model.MovieResult
 import com.lukas.awesomemovies.data.network.model.MovieDetailsResponse
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 
 object Mapper {
 
-    fun mapMovies(results: List<Movie>): List<MovieEntity> {
+    fun mapMovies(results: List<MovieResult>): List<MovieEntity> {
 
         return results.map {
             MovieEntity(
