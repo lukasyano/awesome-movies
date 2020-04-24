@@ -8,5 +8,5 @@ sealed class HomeUiState {
 
     data class Error(val error: String) : HomeUiState()
 
-    data class DisplayFilterLabel(val type: String) : HomeUiState()
+    data class DisplayFilterLabel(val labelText: String) : HomeUiState()
 }

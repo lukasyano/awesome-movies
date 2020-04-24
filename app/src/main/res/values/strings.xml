@@ -11,7 +11,7 @@
     <string name="add_too_bookmarks">ADD TO BOOKMARKS</string>
     <string name="no_bookmarks">No Bookmarks</string>
     <string name="filter">Filter</string>
-    <string name="popularity">POPULARITY</string>
-    <string name="votes">VOTES</string>
-    <string name="date">DATE</string>
+    <string name="popularity">MOST POPULAR</string>
+    <string name="votes">BEST VOTES</string>
+    <string name="date">LATEST</string>
 </resources>

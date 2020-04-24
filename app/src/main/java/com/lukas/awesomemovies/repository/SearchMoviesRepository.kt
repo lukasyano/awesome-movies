@@ -18,5 +18,4 @@ class SearchMoviesRepository(private val moviesService: MoviesService) {
             Mapper.mapMovies(it.results)
         }
     }
-
 }

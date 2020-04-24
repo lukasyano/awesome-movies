@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), MovieListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.filter_by_popularity -> homeViewModel.onFilterTypeClicked(FilterType.POPULARITY)
             R.id.filter_by_date -> homeViewModel.onFilterTypeClicked(FilterType.DATE)
             R.id.filter_by_votes -> homeViewModel.onFilterTypeClicked(FilterType.VOTES)
@@ -70,7 +70,8 @@ class HomeFragment : Fragment(), MovieListener {
                         spinner.hide()
                     }
                     is HomeUiState.DisplayFilterLabel -> {
-                        filterType.text = it.type
+                        filterTypeView.visibility = View.VISIBLE
+                        filterTypeView.text = it.labelText
                     }
                 }
             }
@@ -102,7 +103,7 @@ class HomeFragment : Fragment(), MovieListener {
         }
     }
 
-    override fun onUnselectedBookmarkBtnClick(movie : MovieEntity) {
+    override fun onUnselectedBookmarkBtnClick(movie: MovieEntity) {
         homeViewModel.onUnselectedBookmarkBtnClick(movie)
     }
 

@@ -34,8 +34,9 @@ class DiscoverViewModel(
                 { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
             )
         bag.add(disposable)
-
     }
+
+
 
     override fun onCleared() {
         super.onCleared()
