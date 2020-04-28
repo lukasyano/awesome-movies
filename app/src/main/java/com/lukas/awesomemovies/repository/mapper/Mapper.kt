@@ -47,4 +47,19 @@ object Mapper {
         )
     }
 
+//    fun mapDiscoveryMovies(response: MovieDiscoveryResponse): List<MovieEntity> {
+//        response.results.map {
+//            MovieEntity(
+//                id = it.id ?: -1,
+//                title = it.title ?: "",
+//                popularity = it.popularity ?: 0.0,
+//                overview = it.overview ?: "",
+//                releaseDate = it.releaseDate ?: "",
+//                voteAverage = it.voteAverage ?: 0.0,
+//                voteCount = it.voteCount ?: 0,
+//                posterPath = it.posterPath ?: ""
+//            )
+//        }
+//
+//}
 }

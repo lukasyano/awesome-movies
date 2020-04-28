@@ -9,4 +9,5 @@ val repositoryModule = module {
     single { BookmarksRepository(get()) }
     single { DetailsRepository(get()) }
     single { GenreRepository(get()) }
+    single { DiscoveryRepository(get()) }
 }

@@ -11,5 +11,5 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { DetailsViewModel(get(), get()) }
     viewModel { BookmarksViewModel(get()) }
-    viewModel { DiscoverViewModel(get(), get()) }
+    viewModel { DiscoverViewModel(get(), get(), get()) }
 }

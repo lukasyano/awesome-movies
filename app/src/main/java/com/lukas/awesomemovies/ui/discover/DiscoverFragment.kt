@@ -44,6 +44,7 @@ class DiscoverFragment : Fragment(), MovieListener {
         setSearchView()
     }
 
+
     private fun observeLiveData() {
         discoverViewModel.liveData.observe(
             viewLifecycleOwner, Observer {
@@ -86,7 +87,6 @@ class DiscoverFragment : Fragment(), MovieListener {
             }
         })
     }
-
 
     override fun onMovieClick(movie: MovieEntity) {
         view?.let {
