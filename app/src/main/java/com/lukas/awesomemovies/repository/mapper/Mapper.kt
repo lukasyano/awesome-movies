@@ -1,9 +1,11 @@
 package com.lukas.awesomemovies.repository.mapper
 
-import com.lukas.awesomemovies.data.network.model.MovieResult
 import com.lukas.awesomemovies.data.network.model.MovieDetailsResponse
+import com.lukas.awesomemovies.data.network.model.MovieGenresResponse
+import com.lukas.awesomemovies.data.network.model.MovieResult
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
 import com.lukas.awesomemovies.repository.entity.MovieEntity
+import com.lukas.awesomemovies.repository.entity.MovieGenresEntity
 
 object Mapper {
 
@@ -27,7 +29,9 @@ object Mapper {
 
     fun mapMovieDetails(response: MovieDetailsResponse): MovieDetailsEntity {
         var originalLanguage = "Unknown"
-        val genresList = response.genres?.map { it.name }
+        val genresList = response.genres?.map {
+            it.name ?: ""
+        }
 
         response.spoken_languages?.forEach {
             if (it.iso_639_1 == response.original_language) {
@@ -47,19 +51,12 @@ object Mapper {
         )
     }
 
-//    fun mapDiscoveryMovies(response: MovieDiscoveryResponse): List<MovieEntity> {
-//        response.results.map {
-//            MovieEntity(
-//                id = it.id ?: -1,
-//                title = it.title ?: "",
-//                popularity = it.popularity ?: 0.0,
-//                overview = it.overview ?: "",
-//                releaseDate = it.releaseDate ?: "",
-//                voteAverage = it.voteAverage ?: 0.0,
-//                voteCount = it.voteCount ?: 0,
-//                posterPath = it.posterPath ?: ""
-//            )
-//        }
-//
-//}
+    fun mapMovieGenres(response: MovieGenresResponse): List<MovieGenresEntity> {
+        return response.genres.map {
+            MovieGenresEntity(
+                id = it.id ?: -1,
+                name = it.name ?: ""
+            )
+        }
+    }
 }

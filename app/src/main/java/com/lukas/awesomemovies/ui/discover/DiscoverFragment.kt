@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.Chip
 import com.lukas.awesomemovies.R
-import com.lukas.awesomemovies.logTimberWithTag
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
@@ -40,33 +40,38 @@ class DiscoverFragment : Fragment(), MovieListener {
         recycleView.layoutManager = LinearLayoutManager(context)
 
         observeLiveData()
-        observeBookmarksLiveData()
         setSearchView()
     }
-
 
     private fun observeLiveData() {
         discoverViewModel.liveData.observe(
             viewLifecycleOwner, Observer {
                 when (it) {
-                    is DiscoverUiState.Success -> {
+                    is DiscoverUiState.MovieEntityData -> {
                         moviesAdapter.updateData(it.movies)
                         spinner.hide()
+                        chipGroup.visibility = View.GONE
+                        recycleView.visibility = View.VISIBLE
                     }
                     is DiscoverUiState.Error -> {
-                        logTimberWithTag(it.error)
+                        chipGroup.visibility = View.GONE
+                        recycleView.visibility = View.GONE
                         recycleView.snack(it.error)
                         spinner.hide()
                     }
-                }
-            }
-        )
-    }
+                    is DiscoverUiState.BookmarksData -> {
+                        moviesAdapter.updateData(data = null, bookmarksIds = it.bookmarksIds)
+                    }
 
-    private fun observeBookmarksLiveData() {
-        discoverViewModel.bookmarksLiveData.observe(
-            viewLifecycleOwner, Observer {
-                moviesAdapter.updateData(data = null, bookmarksIds = it)
+                    is DiscoverUiState.GenresData -> {
+                        chipGroup.visibility = View.VISIBLE
+                        it.genres.forEach {
+                            val chip = Chip(this.context)
+                            chip.text = it.name
+                            chipGroup.addView(chip)
+                        }
+                    }
+                }
             }
         )
     }
