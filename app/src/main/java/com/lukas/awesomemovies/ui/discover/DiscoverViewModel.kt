@@ -16,18 +16,28 @@ class DiscoverViewModel(
     var liveData = MutableLiveData<DiscoverUiState>()
     var bag = CompositeDisposable()
 
-init {
-      getMovieGenres()
+    init {
+        getBookmarkedMoviesIds()
+        getMovieGenres()
     }
 
     fun searchMovies(query: String) {
-        val disposable = searchMoviesRepository.getMoviesFromSearch(query).doOnSuccess {
-            getBookmarkedMoviesIds()
-        }
+        val disposable = searchMoviesRepository.getMoviesFromSearch(query)
+
             .subscribe(
                 { liveData.postValue(DiscoverUiState.MovieEntityData(it)) },
                 { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
             )
+        bag.add(disposable)
+    }
+
+    private fun getDiscoveryMoviesByGenres(genreId: Int) {
+        val disposable = discoveryRepository.getDiscoveryMoviesByGenres(genreId)
+            .subscribe(
+                { liveData.postValue(DiscoverUiState.MovieEntityData(it)) },
+                { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
+            )
+
         bag.add(disposable)
     }
 
@@ -54,6 +64,10 @@ init {
             .subscribe()
 
         bag.add(disposable)
+    }
+
+    fun onGenreBtnClick(movieId: Int){
+        getDiscoveryMoviesByGenres(movieId)
     }
 
     fun onSelectedBtnClick(movieId: Int) {

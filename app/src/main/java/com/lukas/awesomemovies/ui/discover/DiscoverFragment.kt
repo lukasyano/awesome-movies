@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
+import com.lukas.awesomemovies.repository.entity.MovieGenresEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
 import com.lukas.awesomemovies.ui.MoviesAdapter
@@ -38,9 +39,8 @@ class DiscoverFragment : Fragment(), MovieListener {
         moviesAdapter = MoviesAdapter(this)
         recycleView.adapter = moviesAdapter
         recycleView.layoutManager = LinearLayoutManager(context)
-
+        setUi()
         observeLiveData()
-        setSearchView()
     }
 
     private fun observeLiveData() {
@@ -64,19 +64,14 @@ class DiscoverFragment : Fragment(), MovieListener {
                     }
 
                     is DiscoverUiState.GenresData -> {
-                        chipGroup.visibility = View.VISIBLE
-                        it.genres.forEach {
-                            val chip = Chip(this.context)
-                            chip.text = it.name
-                            chipGroup.addView(chip)
-                        }
+                        setGenreChipGroup(it.genres)
                     }
                 }
             }
         )
     }
 
-    private fun setSearchView() {
+    private fun setUi() {
         searchView.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -110,6 +105,20 @@ class DiscoverFragment : Fragment(), MovieListener {
 
     override fun onSelectedBookmarkBtnClick(movieId: Int) {
         discoverViewModel.onSelectedBtnClick(movieId)
+    }
+
+    private fun setGenreChipGroup(genres : List<MovieGenresEntity>) {
+        chipGroup.visibility = View.VISIBLE
+
+        genres.forEach {
+            val chip = Chip(this.context)
+            chip.text = it.name
+            chip.id = it.id
+            chip.setOnClickListener {
+                discoverViewModel.onGenreBtnClick(chip.id)
+            }
+            chipGroup.addView(chip)
+        }
     }
 
     override fun onPause() {

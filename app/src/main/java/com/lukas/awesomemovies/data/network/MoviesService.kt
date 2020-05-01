@@ -22,5 +22,5 @@ interface MoviesService {
     fun getMoviesGenres() : Single<MovieGenresResponse>
 
     @GET("discover/movie")
-    fun getDiscoveryMoviesByGenres() : Single<MoviesResponse>
+    fun getDiscoveryMoviesByGenres(@Query("with_genres") genreId : Int) : Single<MoviesResponse>
 }
