@@ -10,8 +10,8 @@ import io.reactivex.schedulers.Schedulers
 
 class DiscoveryRepository(private val moviesService: MoviesService) {
 
-    fun getDiscoveryMoviesByGenres(genreId : Int): Single<List<MovieEntity>> {
-        return moviesService.getDiscoveryMoviesByGenres(genreId)
+    fun getDiscoveryMoviesByGenres(genreIds : String): Single<List<MovieEntity>> {
+        return moviesService.getDiscoveryMoviesByGenres(genreIds)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { Mapper.mapMovies(it.results) }

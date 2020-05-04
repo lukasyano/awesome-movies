@@ -14,4 +14,5 @@
     <string name="popularity">MOST POPULAR</string>
     <string name="votes">BEST VOTES</string>
     <string name="date">LATEST</string>
+    <string name="show_me_the_movies">Show me the movies!</string>
 </resources>

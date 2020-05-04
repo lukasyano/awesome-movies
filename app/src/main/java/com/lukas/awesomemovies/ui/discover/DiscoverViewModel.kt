@@ -31,8 +31,8 @@ class DiscoverViewModel(
         bag.add(disposable)
     }
 
-    private fun getDiscoveryMoviesByGenres(genreId: Int) {
-        val disposable = discoveryRepository.getDiscoveryMoviesByGenres(genreId)
+    private fun getDiscoveryMoviesByGenres(genreIds : String) {
+        val disposable = discoveryRepository.getDiscoveryMoviesByGenres(genreIds)
             .subscribe(
                 { liveData.postValue(DiscoverUiState.MovieEntityData(it)) },
                 { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
@@ -66,8 +66,8 @@ class DiscoverViewModel(
         bag.add(disposable)
     }
 
-    fun onGenreBtnClick(movieId: Int){
-        getDiscoveryMoviesByGenres(movieId)
+    fun onGenreBtnClick(movieIds: String){
+        getDiscoveryMoviesByGenres(movieIds)
     }
 
     fun onSelectedBtnClick(movieId: Int) {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
@@ -50,11 +51,11 @@ class DiscoverFragment : Fragment(), MovieListener {
                     is DiscoverUiState.MovieEntityData -> {
                         moviesAdapter.updateData(it.movies)
                         spinner.hide()
-                        chipGroup.visibility = View.GONE
+                        group.visibility = View.GONE
                         recycleView.visibility = View.VISIBLE
                     }
                     is DiscoverUiState.Error -> {
-                        chipGroup.visibility = View.GONE
+                        group.visibility = View.GONE
                         recycleView.visibility = View.GONE
                         recycleView.snack(it.error)
                         spinner.hide()
@@ -107,7 +108,7 @@ class DiscoverFragment : Fragment(), MovieListener {
         discoverViewModel.onSelectedBtnClick(movieId)
     }
 
-    private fun setGenreChipGroup(genres : List<MovieGenresEntity>) {
+    private fun setGenreChipGroup(genres: List<MovieGenresEntity>) {
         chipGroup.visibility = View.VISIBLE
 
         genres.forEach {
@@ -115,9 +116,21 @@ class DiscoverFragment : Fragment(), MovieListener {
             chip.text = it.name
             chip.id = it.id
             chip.setOnClickListener {
-                discoverViewModel.onGenreBtnClick(chip.id)
+                chip.isSelected = !chip.isSelected
             }
             chipGroup.addView(chip)
+        }
+
+        button.setOnClickListener {
+
+            val queryParameters = mutableListOf<Int>()
+
+            chipGroup.forEach {
+                if (it.isSelected) {
+                    queryParameters.add(it.id)
+                }
+            }
+            discoverViewModel.onGenreBtnClick(queryParameters.joinToString())
         }
     }
 
