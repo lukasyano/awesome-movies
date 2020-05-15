@@ -1,4 +1,4 @@
-package com.lukas.awesomemovies.ui.home
+package com.lukas.awesomemovies.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class HomeAdapter(private val listener: MovieListener) : RecyclerView.Adapter<HomeAdapter.MovieItemViewHolder>() {
+class MoviesAdapter(private val listener: MovieListener) :
+    RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder>() {
 
-    private var data: List<MovieEntity> = emptyList()
+    private var data = emptyList<MovieEntity>()
+    private var bookmarkedMoviesIds = emptyList<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,22 +26,36 @@ class HomeAdapter(private val listener: MovieListener) : RecyclerView.Adapter<Ho
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
-        val movieEntity = data[position]
+        val movie = data[position]
+        val isBookmarked = bookmarkedMoviesIds.contains(movie.id)
 
         holder.rootView.setOnClickListener {
-           listener.onMovieClick(movieEntity.id)
+            listener.onMovieClick(movie)
         }
+
+        holder.bookmarksImageView.isSelected = isBookmarked
+
         holder.bookmarksImageView.setOnClickListener {
-            listener.onBookmarksClick(movieEntity)
+            if (isBookmarked) {
+                listener.onSelectedBookmarkBtnClick(movie.id)
+            } else {
+                listener.onUnselectedBookmarkBtnClick(movie)
+            }
         }
-        holder.bookmarksImageView.isSelected = movieEntity.isBookmarked
-        holder.titleView.text = movieEntity.title
-        holder.descriptionView.text = movieEntity.overview
-        holder.mainImageView.loadIntoBaseUrl(movieEntity.posterPath)
+
+        holder.titleView.text = movie.title
+        holder.descriptionView.text = movie.overview
+        holder.mainImageView.loadIntoBaseUrl(movie.posterPath)
+        holder.ratingStarView.text = movie.voteAverage.toString()
     }
 
-    fun updateData(data: List<MovieEntity>) {
-        this.data = data
+    fun updateData(data: List<MovieEntity>? = null, bookmarksIds: List<Int>? = null) {
+        data?.let {
+            this.data = data
+        }
+        bookmarksIds?.let {
+            this.bookmarkedMoviesIds = bookmarksIds
+        }
         notifyDataSetChanged()
     }
 
@@ -50,5 +65,6 @@ class HomeAdapter(private val listener: MovieListener) : RecyclerView.Adapter<Ho
         var titleView = view.titleV
         var descriptionView = view.descriptionV
         var bookmarksImageView = view.bookmarksImageV
+        var ratingStarView = view.rating
     }
 }

@@ -9,13 +9,14 @@ import com.google.android.material.chip.Chip
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieDetailsEntity
+import com.lukas.awesomemovies.snack
 import kotlinx.android.synthetic.main.activity_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsActivity : AppCompatActivity() {
 
-    private val movieId by lazy {
-        navArgs<DetailsActivityArgs>().value.movieId
+    private val movie by lazy {
+        navArgs<DetailsActivityArgs>().value.movieEntity
     }
 
     private val detailsViewModel: DetailsViewModel by viewModel()
@@ -23,28 +24,21 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        observeDetailsData()
-        observeMovieEntityData()
-        detailsViewModel.getMovieDetails(movieId)
-        detailsViewModel.getMovieById(movieId)
+        observeLiveData()
+
+        detailsViewModel.getBookmarkedMovieById(movie.id)
+        detailsViewModel.getMovieDetails(movie.id)
     }
 
-    private fun observeMovieEntityData() {
-        detailsViewModel.movieEntityLiveData.observe(
-            this, Observer {
-                if (it.isBookmarked) {
-                    add_to_bookmarks.text = getString(R.string.remove_from_bookmarks)
-                } else {
-                    add_to_bookmarks.text = getString(R.string.add_too_bookmarks)
-                }
-            }
-        )
-    }
-
-    private fun observeDetailsData() {
+    private fun observeLiveData() {
         detailsViewModel.liveData.observe(
             this, Observer {
-                setUi(it)
+                when (it) {
+                    is DetailsUiState.Success -> setUi(it.detailsEntity)
+                    is DetailsUiState.Error -> root.snack(it.error)
+                    DetailsUiState.SelectBookmarksButton -> bookmarksImageV.isSelected = true
+                    DetailsUiState.DeselectBookmarksButton -> bookmarksImageV.isSelected = false
+                }
             }
         )
     }
@@ -57,14 +51,21 @@ class DetailsActivity : AppCompatActivity() {
         duration.text = "${(entity.runtime / 60)}h ${(entity.runtime % 60)}min"
         describe.text = entity.overview
         supportActionBar?.title = entity.title
+        rating.text = entity.movieAverage.toString()
 
         entity.genres.forEach {
             val chip = Chip(this)
             chip.text = it
             chipGroup.addView(chip)
         }
-        add_to_bookmarks.setOnClickListener {
-            detailsViewModel.onBookmarksButtonClick()
+
+        bookmarksImageV.setOnClickListener {
+            val isBookmarked = bookmarksImageV.isSelected
+            if (isBookmarked) {
+                detailsViewModel.onSelectedButtonClick(movie.id)
+            } else {
+                detailsViewModel.onDeselectedButtonClick(movie)
+            }
         }
     }
 }

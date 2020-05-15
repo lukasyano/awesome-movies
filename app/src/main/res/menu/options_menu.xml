@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/dummy_data_menu_item"
-        android:title="FetchDummyData" />
+        android:id="@+id/options_menu"
+        android:icon="@drawable/ic_filter_list_black_24dp"
+        android:title="@string/filter"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/filter_by_popularity"
+                android:title="@string/popularity" />
+            <item
+                android:id="@+id/filter_by_votes"
+                android:title="@string/votes" />
+            <item
+                android:id="@+id/filter_by_date"
+                android:title="@string/date" />
+        </menu>
+    </item>
+
 </menu>

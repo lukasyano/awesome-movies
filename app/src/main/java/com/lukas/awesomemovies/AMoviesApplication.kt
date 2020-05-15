@@ -2,10 +2,7 @@ package com.lukas.awesomemovies
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import com.lukas.awesomemovies.di.moviesDatabaseModule
-import com.lukas.awesomemovies.di.networkModule
-import com.lukas.awesomemovies.di.repositoryModule
-import com.lukas.awesomemovies.di.viewModelModule
+import com.lukas.awesomemovies.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -18,7 +15,7 @@ class AMoviesApplication : Application() {
 
         startKoin {
             androidContext(this@AMoviesApplication)
-            modules(networkModule, repositoryModule, viewModelModule, moviesDatabaseModule)
+            modules(networkModule, repositoryModule, viewModelModule, moviesDatabaseModule, sharedPreferencesModule)
         }
 
         if (BuildConfig.DEBUG) {

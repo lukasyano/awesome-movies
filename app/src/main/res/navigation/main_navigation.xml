@@ -18,20 +18,28 @@
     <fragment
         android:id="@+id/navigation_discover"
         android:name="com.lukas.awesomemovies.ui.discover.DiscoverFragment"
-        android:label="@string/title_discover" />
+        android:label="@string/title_discover" >
+        <action
+            android:id="@+id/action_navigation_discover_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_bookmarks"
         android:name="com.lukas.awesomemovies.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_bookmarks" />
+        android:label="@string/title_bookmarks" >
+        <action
+            android:id="@+id/action_navigation_bookmarks_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
 
     <activity
         android:id="@+id/navigation_movie_details"
         android:name="com.lukas.awesomemovies.ui.details.DetailsActivity"
         android:label="title_movie_details" >
         <argument
-            android:name="movieId"
-            app:argType="integer" />
+            android:name="movieEntity"
+            app:argType="com.lukas.awesomemovies.repository.entity.MovieEntity" />
 
     </activity>
 

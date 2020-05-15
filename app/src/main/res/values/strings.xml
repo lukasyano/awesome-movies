@@ -9,4 +9,10 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="remove_from_bookmarks">REMOVE FROM BOOKMARKS</string>
     <string name="add_too_bookmarks">ADD TO BOOKMARKS</string>
+    <string name="no_bookmarks">No Bookmarks</string>
+    <string name="filter">Filter</string>
+    <string name="popularity">MOST POPULAR</string>
+    <string name="votes">BEST VOTES</string>
+    <string name="date">LATEST</string>
+    <string name="show_me_the_movies">Show me the movies!</string>
 </resources>

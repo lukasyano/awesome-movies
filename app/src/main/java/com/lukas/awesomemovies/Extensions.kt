@@ -1,5 +1,6 @@
 package com.lukas.awesomemovies
 
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
@@ -22,3 +23,9 @@ fun View.snack(text: String) {
 fun logTimberWithTag(msg: Any, tag: String = "TIMBER_DEBUG_TAG") {
     Timber.tag(tag).d(msg.toString())
 }
+
+inline fun <reified T : Enum<T>> SharedPreferences.getEnum(key: String, default: T) =
+    this.getInt(key, -1).let { if (it >= 0) enumValues<T>()[it] else default }
+
+fun <T : Enum<T>> SharedPreferences.Editor.putEnum(key: String, value: T?) : SharedPreferences.Editor =
+    this.putInt(key, value?.ordinal ?: -1)

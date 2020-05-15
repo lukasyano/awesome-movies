@@ -55,5 +55,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/ic_bookmarks_selector"
             tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/medium_space"
+            android:drawablePadding="3dp"
+            android:drawableStart="@drawable/ic_star_border_black_24dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bookmarksImageV" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
