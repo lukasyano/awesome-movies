@@ -18,11 +18,10 @@ The entire project developed using **Kotlin** programming language. App uses [th
 * Livedata
 * Navigation component
 * ViewModel
+* *View Binding(Comming soon!)
 
 ### Third part Libraries :
-* Dependency Injection - Koin
+* Dependency Injection - Dagger Hilt(Comming Soon!). Now project is using Koin
 * Networking - Retrofit2 , okHttp
 * Concurrency - RxJava2
 * Image loading – Glide
-
-
