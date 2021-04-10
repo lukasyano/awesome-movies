@@ -1,6 +1,9 @@
 package com.lukas.awesomemovies.data.database
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Completable
 import io.reactivex.Observable

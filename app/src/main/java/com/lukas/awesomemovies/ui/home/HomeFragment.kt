@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.FilterType
+import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener

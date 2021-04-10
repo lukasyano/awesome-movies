@@ -10,10 +10,10 @@ import timber.log.Timber
 
 fun ImageView.loadIntoBaseUrl(posterPath: String) {
     GlideApp
-        .with(this)
-        .load(Constants.IMAGE_BASE_URL.plus(posterPath))
-        .centerCrop()
-        .into(this)
+            .with(this)
+            .load(Constants.IMAGE_BASE_URL.plus(posterPath))
+            .centerCrop()
+            .into(this)
 }
 
 fun View.snack(text: String) {
@@ -25,7 +25,7 @@ fun logTimberWithTag(msg: Any, tag: String = "TIMBER_DEBUG_TAG") {
 }
 
 inline fun <reified T : Enum<T>> SharedPreferences.getEnum(key: String, default: T) =
-    this.getInt(key, -1).let { if (it >= 0) enumValues<T>()[it] else default }
+        this.getInt(key, -1).let { if (it >= 0) enumValues<T>()[it] else default }
 
-fun <T : Enum<T>> SharedPreferences.Editor.putEnum(key: String, value: T?) : SharedPreferences.Editor =
-    this.putInt(key, value?.ordinal ?: -1)
+fun <T : Enum<T>> SharedPreferences.Editor.putEnum(key: String, value: T?): SharedPreferences.Editor =
+        this.putInt(key, value?.ordinal ?: -1)

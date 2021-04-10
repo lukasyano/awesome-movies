@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
-import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

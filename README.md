@@ -20,7 +20,7 @@ The entire project developed using **Kotlin** programming language. App uses [th
 * ViewModel
 
 ### Third part Libraries :
-* Dependency Injection - Koin
+* Dependency Injection - Koin/ {Dagger Hilt(Coming soon!)}
 * Networking - Retrofit2 , okHttp
 * Concurrency - RxJava2
 * Image loading – Glide

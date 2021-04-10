@@ -27,13 +27,13 @@ class BookmarksRepository(private val moviesDao: MoviesDao) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getBookmarkedMovieById(movieId: Int): Observable<MovieEntity>{
+    fun getBookmarkedMovieById(movieId: Int): Observable<MovieEntity> {
         return moviesDao.getBookmarkedMovieById(movieId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getBookmarkedMoviesIds() : Observable<List<Int>>{
+    fun getBookmarkedMoviesIds(): Observable<List<Int>> {
         return moviesDao.getBookmarkedMoviesIds()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
