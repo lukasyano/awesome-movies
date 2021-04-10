@@ -3,6 +3,10 @@ package com.lukas.awesomemovies.ui.bookmarks
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
@@ -50,11 +54,11 @@ class BookmarksAdapter(private val listener: BookmarksListener) :
     }
 
     class MovieItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var rootView = view.root
-        var mainImageView = view.mainImageV
-        var titleView = view.titleV
-        var descriptionView = view.descriptionV
-        var bookmarksImageView = view.bookmarksImageV
-        var ratingStarView = view.rating
+        var rootView: ConstraintLayout = view.root
+        var mainImageView: ImageView = view.mainImageV
+        var titleView: TextView = view.titleV
+        var descriptionView: TextView = view.descriptionV
+        var bookmarksImageView: ImageButton = view.bookmarksImageV
+        var ratingStarView: TextView = view.rating
     }
 }

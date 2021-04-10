@@ -8,7 +8,6 @@ import io.reactivex.disposables.CompositeDisposable
 class BookmarksViewModel(private val repository: BookmarksRepository) : ViewModel() {
 
     var liveData = MutableLiveData<BookmarksUiState>()
-
     var bag: CompositeDisposable = CompositeDisposable()
 
     init {
@@ -38,3 +37,4 @@ class BookmarksViewModel(private val repository: BookmarksRepository) : ViewMode
         bag.clear()
     }
 }
+

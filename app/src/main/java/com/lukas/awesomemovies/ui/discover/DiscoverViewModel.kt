@@ -13,6 +13,7 @@ class DiscoverViewModel(
     private val bookmarksRepository: BookmarksRepository,
     private val discoveryRepository: DiscoveryRepository
 ) : ViewModel() {
+
     var liveData = MutableLiveData<DiscoverUiState>()
     var bag = CompositeDisposable()
 
@@ -28,6 +29,7 @@ class DiscoverViewModel(
                 { liveData.postValue(DiscoverUiState.MovieEntityData(it)) },
                 { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
             )
+
         bag.add(disposable)
     }
 
@@ -47,6 +49,7 @@ class DiscoverViewModel(
                 { liveData.postValue(DiscoverUiState.BookmarksData(it)) },
                 { liveData.postValue(DiscoverUiState.Error(it.message.toString())) }
             )
+
         bag.add(disposable)
     }
 

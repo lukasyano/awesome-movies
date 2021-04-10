@@ -12,7 +12,6 @@ class DetailsViewModel(
     private val bookmarksRepository: BookmarksRepository
 ) : ViewModel() {
 
-
     var liveData: MutableLiveData<DetailsUiState> = MutableLiveData()
     private val bag = CompositeDisposable()
 
@@ -56,5 +55,4 @@ class DetailsViewModel(
         super.onCleared()
         bag.clear()
     }
-
 }

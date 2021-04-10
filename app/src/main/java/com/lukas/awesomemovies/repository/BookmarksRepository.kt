@@ -38,5 +38,4 @@ class BookmarksRepository(private val moviesDao: MoviesDao) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
 }

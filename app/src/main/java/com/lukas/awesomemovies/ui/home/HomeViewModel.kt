@@ -22,7 +22,6 @@ class HomeViewModel(
 
     val liveData = MutableLiveData<HomeUiState>()
     val bookmarksLiveData = MutableLiveData<List<Int>>()
-
     private var bag = CompositeDisposable()
 
     init {
@@ -55,6 +54,7 @@ class HomeViewModel(
                 { liveData.postValue(HomeUiState.Success(it)) },
                 { liveData.postValue(HomeUiState.Error(it.message.toString())) }
             )
+
         bag.add(disposable)
     }
 
@@ -64,6 +64,7 @@ class HomeViewModel(
                 { bookmarksLiveData.postValue(it) },
                 { liveData.postValue(HomeUiState.Error(it.message.toString())) }
             )
+
         bag.add(disposable)
     }
 
@@ -81,11 +82,6 @@ class HomeViewModel(
         bag.add(disposable)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        bag.clear()
-    }
-
     fun onFilterTypeClicked(filterType: FilterType) {
         sharedPreferences.edit().putEnum(FILTER_TYPE_KEY, filterType).apply()
 
@@ -96,4 +92,10 @@ class HomeViewModel(
             DATE -> getTrendingMovies(filterType = DATE)
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        bag.clear()
+    }
 }
+

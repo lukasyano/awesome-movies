@@ -85,7 +85,6 @@ class HomeFragment : Fragment(), MovieListener {
         )
     }
 
-
     private fun setupPullToRefresh() {
         swipeToRefresh.setOnRefreshListener {
             homeViewModel.onSwipeToRefresh()
@@ -109,5 +108,4 @@ class HomeFragment : Fragment(), MovieListener {
     override fun onSelectedBookmarkBtnClick(movieId: Int) {
         homeViewModel.onSelectedBookmarkBtnClick(movieId)
     }
-
 }

@@ -63,7 +63,6 @@ class DiscoverFragment : Fragment(), MovieListener {
                     is DiscoverUiState.BookmarksData -> {
                         moviesAdapter.updateData(data = null, bookmarksIds = it.bookmarksIds)
                     }
-
                     is DiscoverUiState.GenresData -> {
                         setGenreChipGroup(it.genres)
                     }
@@ -138,7 +137,7 @@ class DiscoverFragment : Fragment(), MovieListener {
         super.onPause()
 
         val imm: InputMethodManager =
-            activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view!!.windowToken, 0)
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

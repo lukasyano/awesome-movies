@@ -25,5 +25,4 @@ interface MoviesDao {
 
     @Query("SELECT * FROM bookmarkedMovies WHERE id = :movieId ")
     fun getBookmarkedMovieById(movieId: Int): Observable<MovieEntity>
-
 }

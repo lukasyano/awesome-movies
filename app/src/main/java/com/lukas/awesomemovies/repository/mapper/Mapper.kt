@@ -10,7 +10,6 @@ import com.lukas.awesomemovies.repository.entity.MovieGenresEntity
 object Mapper {
 
     fun mapMovies(results: List<MovieResult>): List<MovieEntity> {
-
         return results.map {
             MovieEntity(
                 id = it.id ?: -1,
@@ -38,6 +37,7 @@ object Mapper {
                 originalLanguage = it.name
             }
         }
+
         return MovieDetailsEntity(
             id = response.id ?: -1,
             genres = genresList ?: emptyList(),

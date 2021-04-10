@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
@@ -69,6 +68,4 @@ class BookmarksFragment : Fragment(), BookmarksListener {
     override fun onBookmarkBtnClick(movieId: Int) {
         bookmarksViewModel.onBookmarksBtnClick(movieId)
     }
-
-
 }

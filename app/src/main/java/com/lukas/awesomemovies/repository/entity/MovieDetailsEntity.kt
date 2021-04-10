@@ -11,4 +11,3 @@ data class MovieDetailsEntity(
     val releaseDate: String,
     val movieAverage: Double
 )
-

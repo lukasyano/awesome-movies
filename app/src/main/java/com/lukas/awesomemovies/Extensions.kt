@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
 import com.lukas.awesomemovies.data.Constants
-import com.moviesprototype.GlideApp
 import timber.log.Timber
 
 fun ImageView.loadIntoBaseUrl(posterPath: String) {
@@ -30,5 +29,4 @@ inline fun <reified T : Enum<T>> SharedPreferences.getEnum(key: String, default:
 fun <T : Enum<T>> SharedPreferences.Editor.putEnum(
     key: String,
     value: T?
-): SharedPreferences.Editor =
-    this.putInt(key, value?.ordinal ?: -1)
+): SharedPreferences.Editor = this.putInt(key, value?.ordinal ?: -1)

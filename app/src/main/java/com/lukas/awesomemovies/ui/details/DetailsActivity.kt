@@ -32,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         detailsViewModel.liveData.observe(
-            this, Observer {
+            this, {
                 when (it) {
                     is DetailsUiState.Success -> setUi(it.detailsEntity)
                     is DetailsUiState.Error -> root.snack(it.error)
