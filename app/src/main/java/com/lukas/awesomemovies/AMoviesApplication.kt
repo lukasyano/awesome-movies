@@ -3,10 +3,11 @@ package com.lukas.awesomemovies
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.lukas.awesomemovies.di.*
+import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
-
+@HiltAndroidApp
 class AMoviesApplication : Application() {
 
     override fun onCreate() {
