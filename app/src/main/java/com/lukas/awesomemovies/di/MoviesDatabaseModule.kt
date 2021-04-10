@@ -1,12 +1,23 @@
 package com.lukas.awesomemovies.di
 
+import android.content.Context
 import androidx.room.Room
 import com.lukas.awesomemovies.data.database.MoviesDatabase
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Singleton
 
-val moviesDatabaseModule = module {
-    single {
-        Room.databaseBuilder(get(), MoviesDatabase::class.java, "Movies.db")
-            .build().moviesDao()
-    }
+@Module
+@InstallIn(ApplicationComponent::class)
+object MoviesDatabaseModule {
+
+    @Singleton
+    @Provides
+    fun provideMoviesDatabase(@ApplicationContext context: Context) =
+        Room.databaseBuilder(context, MoviesDatabase::class.java, "Movies.db")
+            .build()
+            .moviesDao()
 }

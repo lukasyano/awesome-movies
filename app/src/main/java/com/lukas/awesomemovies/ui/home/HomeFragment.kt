@@ -3,6 +3,7 @@ package com.lukas.awesomemovies.ui.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.FilterType
@@ -11,12 +12,13 @@ import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
 import com.lukas.awesomemovies.ui.MoviesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), MovieListener {
 
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(

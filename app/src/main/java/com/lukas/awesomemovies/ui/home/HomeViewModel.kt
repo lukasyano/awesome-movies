@@ -1,6 +1,7 @@
 package com.lukas.awesomemovies.ui.home
 
 import android.content.SharedPreferences
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lukas.awesomemovies.FilterType
@@ -9,13 +10,10 @@ import com.lukas.awesomemovies.di.FILTER_TYPE_KEY
 import com.lukas.awesomemovies.getEnum
 import com.lukas.awesomemovies.putEnum
 import com.lukas.awesomemovies.repository.BookmarksRepository
-import com.lukas.awesomemovies.repository.TrendingMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 
-class HomeViewModel(
-    private val trendingMoviesRepository: TrendingMoviesRepository,
+class HomeViewModel @ViewModelInject constructor(
     private val bookmarksRepository: BookmarksRepository,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
@@ -43,19 +41,19 @@ class HomeViewModel(
             UNFILTERED -> liveData.postValue(HomeUiState.DisplayFilterLabel("UNFILTERED MOVIES"))
         }
 
-        val observable: Single<List<MovieEntity>> =
-            trendingMoviesRepository.getTrendingMovies(pageNr, filterType)
-                .doOnSuccess {
-                    getBookmarkedMoviesIds()
-                }
+//        val observable: Single<List<MovieEntity>> =
+//            trendingMoviesRepository.getTrendingMovies(pageNr, filterType)
+//                .doOnSuccess {
+//                    getBookmarkedMoviesIds()
+//                }
+//
+//        val disposable = observable
+//            .subscribe(
+//                { liveData.postValue(HomeUiState.Success(it)) },
+//                { liveData.postValue(HomeUiState.Error(it.message.toString())) }
+//            )
 
-        val disposable = observable
-            .subscribe(
-                { liveData.postValue(HomeUiState.Success(it)) },
-                { liveData.postValue(HomeUiState.Error(it.message.toString())) }
-            )
-
-        bag.add(disposable)
+        //   bag.add(disposable)
     }
 
     private fun getBookmarkedMoviesIds() {
