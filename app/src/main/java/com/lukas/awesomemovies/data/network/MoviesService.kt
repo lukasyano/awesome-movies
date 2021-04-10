@@ -10,17 +10,17 @@ import retrofit2.http.Query
 
 interface MoviesService {
     @GET("trending/movie/week")
-    fun getTrendingMovies(@Query("pageNr") pageNr: Int): Single<MoviesResponse>
+    fun getTrendingMovies(@Query("pageNr") pageNr: Int) : Single<MoviesResponse>
 
     @GET("movie/{movieId}")
-    fun getMovieDetails(@Path("movieId") movieId: Int): Single<MovieDetailsResponse>
+    fun getMovieDetails(@Path("movieId") movieId : Int) : Single<MovieDetailsResponse>
 
     @GET("search/movie")
-    fun getMoviesFromSearch(@Query("query") query: String): Single<MoviesResponse>
+    fun getMoviesFromSearch(@Query("query") query: String) : Single<MoviesResponse>
 
     @GET("genre/movie/list")
-    fun getMoviesGenres(): Single<MovieGenresResponse>
+    fun getMoviesGenres() : Single<MovieGenresResponse>
 
     @GET("discover/movie")
-    fun getDiscoveryMoviesByGenres(@Query("with_genres") genreIds: String): Single<MoviesResponse>
+    fun getDiscoveryMoviesByGenres(@Query("with_genres") genreIds : String) : Single<MoviesResponse>
 }

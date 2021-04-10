@@ -3,11 +3,11 @@ package com.lukas.awesomemovies.ui.home
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.lukas.awesomemovies.repository.BookmarksRepository
 import com.lukas.awesomemovies.FilterType
 import com.lukas.awesomemovies.di.FILTER_TYPE_KEY
 import com.lukas.awesomemovies.getEnum
 import com.lukas.awesomemovies.putEnum
-import com.lukas.awesomemovies.repository.BookmarksRepository
 import com.lukas.awesomemovies.repository.TrendingMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Single

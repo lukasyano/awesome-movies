@@ -3,6 +3,7 @@ package com.lukas.awesomemovies.ui.bookmarks
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lukas.awesomemovies.repository.BookmarksRepository
+import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.disposables.CompositeDisposable
 
 class BookmarksViewModel(private val repository: BookmarksRepository) : ViewModel() {

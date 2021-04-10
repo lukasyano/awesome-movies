@@ -20,7 +20,7 @@ class TrendingMoviesRepository(private val movieService: MoviesService) {
             .observeOn(AndroidSchedulers.mainThread())
             .map {
                 when (filterType) {
-                    FilterType.UNFILTERED -> {
+                     FilterType.UNFILTERED-> {
                         Mapper.mapMovies(it.results)
                     }
                     FilterType.POPULARITY -> {

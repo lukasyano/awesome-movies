@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 
 class SearchMoviesRepository(private val moviesService: MoviesService) {
 
-    fun getMoviesFromSearch(query: String): Single<List<MovieEntity>> {
+    fun getMoviesFromSearch(query : String) : Single<List<MovieEntity>> {
         val response = moviesService.getMoviesFromSearch(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.loadIntoBaseUrl
 import com.lukas.awesomemovies.repository.entity.MovieEntity
+import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class BookmarksAdapter(private val listener: BookmarksListener) :
