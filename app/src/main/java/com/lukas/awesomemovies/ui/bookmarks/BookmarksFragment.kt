@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
-import com.lukas.awesomemovies.ui.MovieListener
 import kotlinx.android.synthetic.main.fragment_bookmarks.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,7 +38,7 @@ class BookmarksFragment : Fragment(), BookmarksListener {
 
     private fun observeLiveData() {
         bookmarksViewModel.liveData.observe(
-            viewLifecycleOwner, Observer {
+            viewLifecycleOwner, {
                 when (it) {
                     is BookmarksUiState.Success -> {
                         bookmarksAdapter.updateData(it.movies)
@@ -49,6 +48,8 @@ class BookmarksFragment : Fragment(), BookmarksListener {
                     is BookmarksUiState.Error -> {
                         no_bookmarks.snack(it.error)
                     }
+                    BookmarksUiState.HideNoBookmarksText -> TODO()
+                    BookmarksUiState.ShowNoBookmarksText -> TODO()
                 }
             }
         )

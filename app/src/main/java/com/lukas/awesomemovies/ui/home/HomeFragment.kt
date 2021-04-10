@@ -3,11 +3,10 @@ package com.lukas.awesomemovies.ui.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.FilterType
+import com.lukas.awesomemovies.R
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.snack
 import com.lukas.awesomemovies.ui.MovieListener
@@ -56,7 +55,7 @@ class HomeFragment : Fragment(), MovieListener {
 
     private fun observeLiveData() {
         homeViewModel.liveData.observe(
-            viewLifecycleOwner, Observer {
+            viewLifecycleOwner, {
                 when (it) {
                     is HomeUiState.Success -> {
                         recycleView.scrollToPosition(0)
@@ -80,7 +79,7 @@ class HomeFragment : Fragment(), MovieListener {
 
     private fun observeBookmarksLiveData() {
         homeViewModel.bookmarksLiveData.observe(
-            viewLifecycleOwner, Observer {
+            viewLifecycleOwner, {
                 moviesAdapter.updateData(data = null, bookmarksIds = it)
             }
         )

@@ -31,7 +31,7 @@ class DiscoverViewModel(
         bag.add(disposable)
     }
 
-    private fun getDiscoveryMoviesByGenres(genreIds : String) {
+    private fun getDiscoveryMoviesByGenres(genreIds: String) {
         val disposable = discoveryRepository.getDiscoveryMoviesByGenres(genreIds)
             .subscribe(
                 { liveData.postValue(DiscoverUiState.MovieEntityData(it)) },
@@ -66,7 +66,7 @@ class DiscoverViewModel(
         bag.add(disposable)
     }
 
-    fun onGenreBtnClick(movieIds: String){
+    fun onGenreBtnClick(movieIds: String) {
         getDiscoveryMoviesByGenres(movieIds)
     }
 

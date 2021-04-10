@@ -15,7 +15,13 @@ class AMoviesApplication : Application() {
 
         startKoin {
             androidContext(this@AMoviesApplication)
-            modules(networkModule, repositoryModule, viewModelModule, moviesDatabaseModule, sharedPreferencesModule)
+            modules(
+                networkModule,
+                repositoryModule,
+                viewModelModule,
+                moviesDatabaseModule,
+                sharedPreferencesModule
+            )
         }
 
         if (BuildConfig.DEBUG) {

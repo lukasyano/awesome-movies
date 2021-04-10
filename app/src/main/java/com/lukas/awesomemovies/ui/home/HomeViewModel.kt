@@ -3,11 +3,12 @@ package com.lukas.awesomemovies.ui.home
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lukas.awesomemovies.repository.BookmarksRepository
 import com.lukas.awesomemovies.FilterType
+import com.lukas.awesomemovies.FilterType.*
 import com.lukas.awesomemovies.di.FILTER_TYPE_KEY
 import com.lukas.awesomemovies.getEnum
 import com.lukas.awesomemovies.putEnum
+import com.lukas.awesomemovies.repository.BookmarksRepository
 import com.lukas.awesomemovies.repository.TrendingMoviesRepository
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import io.reactivex.Single
@@ -25,21 +26,22 @@ class HomeViewModel(
     private var bag = CompositeDisposable()
 
     init {
-        val filterType = sharedPreferences.getEnum(FILTER_TYPE_KEY, FilterType.UNFILTERED)
+        val filterType = sharedPreferences.getEnum(FILTER_TYPE_KEY, UNFILTERED)
         getTrendingMovies(1, filterType)
     }
 
     fun onSwipeToRefresh() {
-        val filterType = sharedPreferences.getEnum(FILTER_TYPE_KEY, FilterType.UNFILTERED)
+        val filterType = sharedPreferences.getEnum(FILTER_TYPE_KEY, UNFILTERED)
         getTrendingMovies(1, filterType)
     }
 
     private fun getTrendingMovies(pageNr: Int = 1, filterType: FilterType) {
 
         when (filterType) {
-            FilterType.POPULARITY -> liveData.postValue(HomeUiState.DisplayFilterLabel("MOST POPULAR MOVIES"))
-            FilterType.VOTES -> liveData.postValue(HomeUiState.DisplayFilterLabel("BEST RATED MOVIES"))
-            FilterType.DATE -> liveData.postValue(HomeUiState.DisplayFilterLabel("LATEST MOVIES"))
+            POPULARITY -> liveData.postValue(HomeUiState.DisplayFilterLabel("MOST POPULAR MOVIES"))
+            VOTES -> liveData.postValue(HomeUiState.DisplayFilterLabel("BEST RATED MOVIES"))
+            DATE -> liveData.postValue(HomeUiState.DisplayFilterLabel("LATEST MOVIES"))
+            UNFILTERED -> liveData.postValue(HomeUiState.DisplayFilterLabel("UNFILTERED MOVIES"))
         }
 
         val observable: Single<List<MovieEntity>> =
@@ -88,12 +90,10 @@ class HomeViewModel(
         sharedPreferences.edit().putEnum(FILTER_TYPE_KEY, filterType).apply()
 
         when (filterType) {
-            FilterType.UNFILTERED -> getTrendingMovies(filterType = FilterType.UNFILTERED)
-            FilterType.POPULARITY -> getTrendingMovies(filterType = FilterType.POPULARITY)
-            FilterType.VOTES -> getTrendingMovies(filterType = FilterType.VOTES)
-            FilterType.DATE -> getTrendingMovies(filterType = FilterType.DATE)
+            UNFILTERED -> getTrendingMovies(filterType = UNFILTERED)
+            POPULARITY -> getTrendingMovies(filterType = POPULARITY)
+            VOTES -> getTrendingMovies(filterType = VOTES)
+            DATE -> getTrendingMovies(filterType = DATE)
         }
     }
-
 }
-
