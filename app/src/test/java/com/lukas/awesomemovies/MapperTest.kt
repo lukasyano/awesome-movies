@@ -4,6 +4,8 @@ import com.lukas.awesomemovies.repository.mapper.Mapper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
     @RunWith(MockitoJUnitRunner::class)
@@ -21,6 +23,20 @@ import kotlin.test.assertTrue
             val movieEntity = result[0]
 
             assertTrue(movieEntity.posterPath.isNotEmpty())
-            assertTrue(movieEntity.voteAverage != 0.0)
+            assertNotEquals(movieEntity.voteAverage ,0.0)
+        }
+        /**
+         * original lang should not be empty
+         * original lang should be "Unknown" if original_language not in list of spoken_languages.iso_639_1
+         */
+        @Test
+        fun testMovieDetailsOriginalLanguageSetCorrectly() {
+            val fakeOriginalLanguage  = "Unknown"
+
+            val fakeMovieDetails = fakeMovieDetailsResult
+            val movieDetailsEntity = Mapper.mapMovieDetails(fakeMovieDetails)
+
+            assertTrue(movieDetailsEntity.originalLanguage.isNotEmpty())
+            assertEquals(movieDetailsEntity.originalLanguage, fakeOriginalLanguage)
         }
     }
