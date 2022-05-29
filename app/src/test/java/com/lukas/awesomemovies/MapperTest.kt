@@ -4,6 +4,7 @@ import com.lukas.awesomemovies.repository.mapper.Mapper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
     @RunWith(MockitoJUnitRunner::class)
@@ -20,7 +21,7 @@ import kotlin.test.assertTrue
             assertTrue(result.size == 1) // 2 objects should be filtered
             val movieEntity = result[0]
 
-            assertTrue(movieEntity.posterPath.isNotEmpty())
+            assertFalse(movieEntity.posterPath.isNotEmpty())
             assertTrue(movieEntity.voteAverage != 0.0)
         }
     }
