@@ -4,20 +4,23 @@ import com.lukas.awesomemovies.FilterType
 import com.lukas.awesomemovies.data.network.MoviesService
 import com.lukas.awesomemovies.repository.entity.MovieEntity
 import com.lukas.awesomemovies.repository.mapper.Mapper
+import io.reactivex.Scheduler
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
-class TrendingMoviesRepository(private val movieService: MoviesService) {
-
+class TrendingMoviesRepository(
+    private val movieService: MoviesService,
+    private val schedulerIO: Scheduler,
+    private val schedulerMain: Scheduler
+)
+{
     fun getTrendingMovies(
         pageNr: Int,
         filterType: FilterType
     ): Single<List<MovieEntity>> {
 
         return movieService.getTrendingMovies(pageNr)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(schedulerIO)
+            .observeOn(schedulerMain)
             .map {
                 when (filterType) {
                     FilterType.UNFILTERED -> {
