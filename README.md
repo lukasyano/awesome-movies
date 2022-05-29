@@ -18,7 +18,7 @@ The entire project developed using **Kotlin** programming language. App uses [th
 * Livedata
 * Navigation component
 * ViewModel
-* *View Binding(Comming soon!)
+* View Binding(Comming soon!)
 
 ### Third part Libraries :
 * Dependency Injection - Dagger Hilt(Comming Soon!). Now project is using Koin
