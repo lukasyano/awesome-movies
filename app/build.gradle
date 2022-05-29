@@ -91,4 +91,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin"
+    testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
+    testImplementation 'org.mockito:mockito-inline:2.22.0'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin"
+
 }
