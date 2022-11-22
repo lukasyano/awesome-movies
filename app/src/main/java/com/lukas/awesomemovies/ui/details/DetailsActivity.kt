@@ -2,8 +2,8 @@ package com.lukas.awesomemovies.ui.details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.google.android.material.chip.Chip
 import com.lukas.awesomemovies.R
@@ -26,8 +26,18 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         observeLiveData()
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         detailsViewModel.getBookmarkedMovieById(movie.id)
         detailsViewModel.getMovieDetails(movie.id)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                //finish() ???
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 
     private fun observeLiveData() {
