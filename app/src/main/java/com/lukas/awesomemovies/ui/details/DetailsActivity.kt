@@ -1,6 +1,7 @@
 package com.lukas.awesomemovies.ui.details
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+
         observeLiveData()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -31,13 +33,9 @@ class DetailsActivity : AppCompatActivity() {
         detailsViewModel.getMovieDetails(movie.id)
     }
 
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                //finish() ???
-            }
-        }
-        return super.onContextItemSelected(item)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun observeLiveData() {
