@@ -3,48 +3,52 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
-apply plugin: 'koin'
+
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.lukas.awesomemovies"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.9'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-    // Navigation
-    def navigation = "2.3.5"
+    //navigation
+    def navigation = "2.5.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-ui-ktx:navigation$navigation"
@@ -55,13 +59,14 @@ dependencies {
     def rxJavaAndroid = "2.1.1"
     implementation "io.reactivex.rxjava2:rxjava:$rxJava"
     implementation "io.reactivex.rxjava2:rxandroid:$rxJavaAndroid"
+
     //glide
     def glide = "4.11.0"
     implementation "com.github.bumptech.glide:glide:$glide"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.github.bumptech.glide:compiler:$glide"
 
-    //Retrofit
+    //retrofit
     def retro = "2.9.0"
     def okHttp = "4.9.0"
 
@@ -70,32 +75,32 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retro"
     implementation "com.squareup.okhttp3:okhttp:$okHttp"
 
-    //Room
-    def room_version = "2.2.6"
+    //room
+    def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    //Stetho
+    //stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
-    //Timber
+    //timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    // Koin
-    implementation "org.koin:koin-core-ext:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    testImplementation "org.koin:koin-test:$koin_version"
+    //koin
+    implementation "io.insert-koin:koin-android:$koin_version"
+    testImplementation "io.insert-koin:koin-test:$koin_version"
 
+    //test
+    def kotlin_test = "1.7.20"
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_test"
     testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
     testImplementation 'org.mockito:mockito-inline:2.22.0'
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:"
-    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin"
-    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin"
-
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_test"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_test"
 }
